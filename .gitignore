@@ -1,0 +1,10 @@
+
+*.opendb
+.vs/剑指offer_c++/v15/Browse.VC.db
+.vs/剑指offer_c++/v15/Browse.VC.db
+*.db
+*.ipch
+*.db
+.vs/剑指offer_c++/v15/.suo
+.vs
+*.vcxproj*
