@@ -49,13 +49,13 @@ private:
 	}
 };
 
-int main() {
-	Solution s;
-	//vector<int> num = { 0,1,2,3,4,5 };
-	//vector<int> num = { 4,5,6,7,1,2,3 };
-	vector<int> num = { 2,2,2,2,1,2 };
-
-	int result = s.minNumberInRotateArray(num);
-	cout << result << endl;
-	return 0;
-}
+//int main() {
+//	Solution s;
+//	//vector<int> num = { 0,1,2,3,4,5 };
+//	//vector<int> num = { 4,5,6,7,1,2,3 };
+//	vector<int> num = { 2,2,2,2,1,2 };
+//
+//	int result = s.minNumberInRotateArray(num);
+//	cout << result << endl;
+//	return 0;
+//}
