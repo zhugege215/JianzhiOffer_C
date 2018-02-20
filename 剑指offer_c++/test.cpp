@@ -19,3 +19,9 @@ using namespace std;
 //	}
 //	return 0;
 //}
+
+void main() {
+	string s("12345abcdefg");
+	string a = s.substr(0, 4);
+	cout << a << endl;
+}
