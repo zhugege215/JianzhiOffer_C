@@ -25,3 +25,10 @@ using namespace std;
 //	string a = s.substr(0, 4);
 //	cout << a << endl;
 //}
+
+void main() {
+	int *a;
+	int c = 65;	//A
+	a = &c;
+	cout << (char*)a << endl;
+}
