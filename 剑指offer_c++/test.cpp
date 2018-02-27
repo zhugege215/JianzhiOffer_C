@@ -1,6 +1,8 @@
+#include <cstdio>
 #include <iostream>
 #include <vector>
 #include <string>
+#include <deque>
 using namespace std;
 
 
@@ -26,9 +28,16 @@ using namespace std;
 //	cout << a << endl;
 //}
 
-void main() {
-	int *a;
-	int c = 65;	//A
-	a = &c;
-	cout << (char*)a << endl;
-}
+//void main() {
+//	int *a;
+//	int c = 65;	//A
+//	a = &c;
+//	cout << (char*)a << endl;
+//}
+
+//int main() {
+//	deque<int> s;
+//	int a = s.back();
+//	cout << a << endl;
+//	return 0;
+//}
