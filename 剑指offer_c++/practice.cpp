@@ -1,4 +1,5 @@
 #include <vector>
+#include <stack>
 using namespace std;
 struct ListNode {
 	int val;
@@ -115,28 +116,52 @@ struct TreeNode {
 //};
 
 //4
+//class Solution {
+//public:
+//	TreeNode * reCon(vector<int> pre, vector<int> vin) {
+//		TreeNode * root = reConHelp(pre, 0, pre.size() - 1, vin, 0, vin.size() - 1);
+//		return root;
+//	}
+//private:
+//	TreeNode * reConHelp(vector<int> pre, int preStart, int preEnd, vector<int> vin, int vinStart, int vinEnd) {
+//		if (preStart > preEnd || vinStart > vinEnd)
+//		{
+//			return nullptr;
+//		}
+//		TreeNode* root = new TreeNode(pre[preStart]);
+//		for (size_t i = vinStart; i <= vinEnd; i++)
+//		{
+//			if (vin[i] == pre[preStart])
+//			{
+//				root->left = reConHelp(pre, preStart + 1, preStart + i - vinStart, vin, vinStart, i - 1);
+//				root->right = reConHelp(pre, preStart + i - vinStart + 1, preEnd, vin, i + 1, vinEnd);
+//				break;
+//			}
+//		}
+//		return root;
+//	}
+//};
+
+//5
 class Solution {
 public:
-	TreeNode * reCon(vector<int> pre, vector<int> vin) {
-		TreeNode * root = reConHelp(pre, 0, pre.size() - 1, vin, 0, vin.size() - 1);
-		return root;
+	void push(int node) {
+		stack1.push(node);
 	}
-private:
-	TreeNode * reConHelp(vector<int> pre, int preStart, int preEnd, vector<int> vin, int vinStart, int vinEnd) {
-		if (preStart > preEnd || vinStart > vinEnd)
+
+	int pop() {
+		if (stack2.empty())
 		{
-			return nullptr;
-		}
-		TreeNode* root = new TreeNode(pre[preStart]);
-		for (size_t i = vinStart; i <= vinEnd; i++)
-		{
-			if (vin[i] == pre[preStart])
-			{
-				root->left = reConHelp(pre, preStart + 1, preStart + i - vinStart, vin, vinStart, i - 1);
-				root->right = reConHelp(pre, preStart + i - vinStart + 1, preEnd, vin, i + 1, vinEnd);
-				break;
+			while (!stack1.empty()) {
+				stack2.push(stack1.top());
+				stack1.pop();
 			}
 		}
-		return root;
+		int a = stack2.top();
+		stack2.pop();
+		return a;
 	}
+private:
+	stack<int> stack1;
+	stack<int> stack2;
 };
