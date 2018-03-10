@@ -143,25 +143,97 @@ struct TreeNode {
 //};
 
 //5
+//class Solution {
+//public:
+//	void push(int node) {
+//		stack1.push(node);
+//	}
+//
+//	int pop() {
+//		if (stack2.empty())
+//		{
+//			while (!stack1.empty()) {
+//				stack2.push(stack1.top());
+//				stack1.pop();
+//			}
+//		}
+//		int a = stack2.top();
+//		stack2.pop();
+//		return a;
+//	}
+//private:
+//	stack<int> stack1;
+//	stack<int> stack2;
+//};
+
+//6
+//class Solution {
+//public:
+//	int minNumberInRotateArray(vector<int> rotateArray) {
+//		int size = rotateArray.size();
+//		if (size == 0) return 0;
+//		int left = 0, right = size - 1, mid = 0;
+//		while (rotateArray[left] >= rotateArray[right])
+//		{
+//			if (right - left == 1) {
+//				mid = right;
+//				break;
+//			}
+//			if (rotateArray[left] == rotateArray[right])
+//			{
+//				for (int i = left; i < size; i++) {
+//					if (rotateArray[i] != rotateArray[left])
+//					{
+//						left = i - 1;
+//						break;
+//					}
+//				}
+//				for (size_t i = right; i >= 0; i--)
+//				{
+//					if (rotateArray[right] != rotateArray[i]) {
+//						right = i + 1;
+//						break;
+//					}
+//				}
+//			}
+//			mid = (right + left) / 2;
+//			if (rotateArray[mid] >= rotateArray[left]) {
+//				left = mid;
+//			}
+//			else
+//			{
+//				right = mid;
+//			}
+//		}
+//		return rotateArray[mid];
+//	}
+//};
+
+//7
+//class Solution {
+//public:
+//	int Fibonacci(int n) {
+//		int a = 0, b = 1;
+//		while (n--)
+//		{
+//			b = b + a;
+//			a = b - a;
+//		}
+//		return a;
+//	}
+//};
+
+//8
 class Solution {
 public:
-	void push(int node) {
-		stack1.push(node);
-	}
-
-	int pop() {
-		if (stack2.empty())
+	int jumpFloor(int number) {
+		if (number == 1)
+			return 1;
+		else if (number == 2)
+			return 2;
+		else
 		{
-			while (!stack1.empty()) {
-				stack2.push(stack1.top());
-				stack1.pop();
-			}
+			return jumpFloor(number - 1) + jumpFloor(number - 2);
 		}
-		int a = stack2.top();
-		stack2.pop();
-		return a;
 	}
-private:
-	stack<int> stack1;
-	stack<int> stack2;
 };
