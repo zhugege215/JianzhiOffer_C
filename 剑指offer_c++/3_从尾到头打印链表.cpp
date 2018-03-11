@@ -1,3 +1,7 @@
+//此题有递归与非递归两种解法
+//递归解法考察递归
+//非递归考察C++容器的灵活使用
+
 #include <vector>
 using namespace std;
 

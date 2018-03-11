@@ -1,3 +1,6 @@
+//8, 9, 10是同一道类型的题的不同变体
+//找数学规律题 + 递归
+
 class Solution {
 public:
 	int jumpFloor(int number) {

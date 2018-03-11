@@ -1,3 +1,6 @@
+//8, 9, 10是同一道类型的题的不同变体
+//找啊数学规律 + 递归
+
 class Solution {
 public:
 	int rectCover(int number) {

@@ -1,3 +1,5 @@
+//可以理解为最简单的动态规划
+
 class Solution {
 public:
 	int Fibonacci(int n) {

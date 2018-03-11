@@ -1,3 +1,7 @@
+//二叉树的遍历 + 递归
+//考察能否深入理解二叉树遍历的原理，根据原理找出规律
+//然后根据规律，再结合 递归 来做
+
 #include <vector>
 #include <memory>
 using namespace std;

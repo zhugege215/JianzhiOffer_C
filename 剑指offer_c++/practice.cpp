@@ -224,16 +224,56 @@ struct TreeNode {
 //};
 
 //8
-class Solution {
-public:
-	int jumpFloor(int number) {
-		if (number == 1)
-			return 1;
-		else if (number == 2)
-			return 2;
-		else
-		{
-			return jumpFloor(number - 1) + jumpFloor(number - 2);
-		}
-	}
-};
+//class Solution {
+//public:
+//	int jumpFloor(int number) {
+//		if (number == 1)
+//			return 1;
+//		else if (number == 2)
+//			return 2;
+//		else
+//		{
+//			return jumpFloor(number - 1) + jumpFloor(number - 2);
+//		}
+//	}
+//};
+
+//9
+//class Solution {
+//public:
+//	int jumpFloorII(int number) {
+//		if (number <= 0)
+//		{
+//			return -1;
+//		}
+//		else if (number == 1)
+//		{
+//			return 1;
+//		}
+//		else
+//			return jumpFloorII(number - 1) * 2;
+//	}
+//};
+
+//10
+//class Solution {
+//public:
+//	int rectCover(int number) {
+//		if (number < 1)
+//		{
+//			return -1;
+//		}
+//		else if (number == 1)
+//		{
+//			return 1;
+//		}
+//		else if (number == 2)
+//		{
+//			return 2;
+//		}
+//		else
+//		{
+//			return rectCover(number - 1) + rectCover(number - 2);
+//		}
+//	}
+//};

@@ -1,3 +1,6 @@
+//考察深入理解栈这种数据结构
+//以及C++的stack这一容器适配器的操作
+
 #include <stack>
 using namespace std;
 
