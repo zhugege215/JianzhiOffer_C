@@ -1,5 +1,6 @@
 #include <vector>
 #include <stack>
+#include <stdexcept>
 using namespace std;
 struct ListNode {
 	int val;
@@ -277,3 +278,44 @@ struct TreeNode {
 //		}
 //	}
 //};
+
+//11
+class Solution {
+public:
+	int NumberOf1(int n) {
+		int count = 0;
+		while (n != 0)
+		{
+			n = (n - 1) & n;
+			count++;
+		}
+		return count;
+	}
+};
+
+//12
+class Solution {
+public:
+	double Power(double base, int exponent) {
+		bool flag = true;
+		if (exponent < 0)
+		{
+			if (base == 0) {
+				throw runtime_error("xxx");
+			}
+			flag = false;
+			exponent = -exponent;
+		}
+		double res = 1, temp = 1;
+		while (exponent != 0)
+		{
+			if ((exponent & 1) == 1)
+			{
+				res *= base;
+			}
+			base *= base;
+			exponent >>= 1;
+		}
+		return flag ? res : 1 / res;
+	}
+};
