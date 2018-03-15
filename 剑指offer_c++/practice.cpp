@@ -1,6 +1,8 @@
 #include <vector>
 #include <stack>
 #include <stdexcept>
+#include <algorithm>
+#include <iostream>
 using namespace std;
 struct ListNode {
 	int val;
@@ -280,42 +282,97 @@ struct TreeNode {
 //};
 
 //11
+//class Solution {
+//public:
+//	int NumberOf1(int n) {
+//		int count = 0;
+//		while (n != 0)
+//		{
+//			n = (n - 1) & n;
+//			count++;
+//		}
+//		return count;
+//	}
+//};
+
+//12
+//class Solution {
+//public:
+//	double Power(double base, int exponent) {
+//		bool flag = true;
+//		if (exponent < 0)
+//		{
+//			if (base == 0) {
+//				throw runtime_error("xxx");
+//			}
+//			flag = false;
+//			exponent = -exponent;
+//		}
+//		double res = 1, temp = 1;
+//		while (exponent != 0)
+//		{
+//			if ((exponent & 1) == 1)
+//			{
+//				res *= base;
+//			}
+//			base *= base;
+//			exponent >>= 1;
+//		}
+//		return flag ? res : 1 / res;
+//	}
+//};
+
+//13
+//class Solution {
+//public:
+//	void reOrderArray(vector<int> &array) {
+//		for (auto i = array.begin(); i < array.end(); i++)
+//		{
+//			for (auto j = array.end() - 1; j > i; j--) {
+//				if (*j % 2 == 1 && *(j - 1) % 2 == 0)
+//				{
+//					swap(*j, *(j - 1));
+//				}
+//			}
+//		}
+//	}
+//};
+
+//14
 class Solution {
 public:
-	int NumberOf1(int n) {
-		int count = 0;
-		while (n != 0)
-		{
-			n = (n - 1) & n;
-			count++;
+	ListNode * FindKthToTail(ListNode* pListHead, unsigned int k) {
+		if (pListHead == nullptr || k <= 0) {
+			return nullptr;
 		}
-		return count;
+		ListNode *p1, *p2;
+		p2 = pListHead;
+		p1 = pListHead;
+		while (--k)
+		{
+			if (p2->next == nullptr)
+			{
+				return nullptr;
+			}
+			p2 = p2->next;
+		}
+		while (p2->next)
+		{
+			p2 = p2->next;
+			p1 = p1->next;
+		}
+		return p1;
 	}
 };
 
-//12
-class Solution {
-public:
-	double Power(double base, int exponent) {
-		bool flag = true;
-		if (exponent < 0)
-		{
-			if (base == 0) {
-				throw runtime_error("xxx");
-			}
-			flag = false;
-			exponent = -exponent;
-		}
-		double res = 1, temp = 1;
-		while (exponent != 0)
-		{
-			if ((exponent & 1) == 1)
-			{
-				res *= base;
-			}
-			base *= base;
-			exponent >>= 1;
-		}
-		return flag ? res : 1 / res;
-	}
-};
+//int main() {
+//	Solution s;
+//	vector<int> num = {2,4,6,1};
+//
+//	s.reOrderArray(num);
+//	for (auto i = num.begin(); i != num.end(); i++)
+//	{
+//		cout << *i << " ";
+//	}
+//	return 0;
+//}

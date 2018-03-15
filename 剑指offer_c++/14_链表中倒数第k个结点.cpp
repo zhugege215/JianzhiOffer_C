@@ -1,3 +1,5 @@
+//这道题一定要有完整性判断
+//即，记得判断链表头是否为空或k是否为非正数
 #include <vector>
 using namespace std;
 

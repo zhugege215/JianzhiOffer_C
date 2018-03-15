@@ -1,3 +1,4 @@
+//¿‡À∆”Î√∞≈›≈≈–Ú
 #include <vector>
 using namespace std;
 
