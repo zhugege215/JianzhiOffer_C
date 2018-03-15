@@ -1,5 +1,5 @@
-//类似与冒泡排序
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Solution {
@@ -20,3 +20,19 @@ public:
 		}
 	}
 };
+
+//还有一种方法，类似于冒泡排序
+//class Solution {
+//public:
+//	void reOrderArray(vector<int> &array) {
+//		for (auto i = array.begin(); i < array.end(); i++)
+//		{
+//			for (auto j = array.end() - 1; j > i; j--) {
+//				if (*j % 2 == 1 && *(j - 1) % 2 == 0)
+//				{
+//					swap(*j, *(j - 1));
+//				}
+//			}
+//		}
+//	}
+//};
