@@ -339,31 +339,31 @@ struct TreeNode {
 //};
 
 //14
-class Solution {
-public:
-	ListNode * FindKthToTail(ListNode* pListHead, unsigned int k) {
-		if (pListHead == nullptr || k <= 0) {
-			return nullptr;
-		}
-		ListNode *p1, *p2;
-		p2 = pListHead;
-		p1 = pListHead;
-		while (--k)
-		{
-			if (p2->next == nullptr)
-			{
-				return nullptr;
-			}
-			p2 = p2->next;
-		}
-		while (p2->next)
-		{
-			p2 = p2->next;
-			p1 = p1->next;
-		}
-		return p1;
-	}
-};
+//class Solution {
+//public:
+//	ListNode * FindKthToTail(ListNode* pListHead, unsigned int k) {
+//		if (pListHead == nullptr || k <= 0) {
+//			return nullptr;
+//		}
+//		ListNode *p1, *p2;
+//		p2 = pListHead;
+//		p1 = pListHead;
+//		while (--k)
+//		{
+//			if (p2->next == nullptr)
+//			{
+//				return nullptr;
+//			}
+//			p2 = p2->next;
+//		}
+//		while (p2->next)
+//		{
+//			p2 = p2->next;
+//			p1 = p1->next;
+//		}
+//		return p1;
+//	}
+//};
 
 //int main() {
 //	Solution s;
@@ -376,3 +376,52 @@ public:
 //	}
 //	return 0;
 //}
+
+//15
+//class Solution {
+//public:
+//	ListNode * ReverseList(ListNode* pHead) {
+//		if (pHead == nullptr)
+//		{
+//			return nullptr;
+//		}
+//		ListNode* pre = nullptr;
+//		ListNode* current = pHead;
+//		ListNode* ne = nullptr;
+//		
+//		while (current->next)
+//		{
+//			ne = current->next;
+//			current->next = pre;
+//			pre = current;
+//			current = ne;
+//		}
+//		current->next = pre;
+//		return current;
+//	}
+//};
+
+//16
+class Solution {
+public:
+	ListNode * Merge(ListNode* pHead1, ListNode* pHead2) {
+		if (pHead1 == nullptr)
+		{
+			return pHead2;
+		}
+		if (pHead2 == nullptr)
+		{
+			return pHead1;
+		}
+		if (pHead1->val > pHead2->val)
+		{
+			pHead2->next = Merge(pHead1, pHead2->next);
+			return pHead2;
+		}
+		else
+		{
+			pHead1->next = Merge(pHead1->next, pHead2);
+			return pHead1;
+		}
+	}
+};
