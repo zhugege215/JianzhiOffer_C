@@ -427,30 +427,48 @@ struct TreeNode {
 //};
 
 //17
+//class Solution {
+//public:
+//	bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2) {
+//		if (pRoot2 == nullptr || pRoot1 == nullptr)
+//		{
+//			return false;
+//		}
+//		
+//		return IsSubtree(pRoot1, pRoot2) || HasSubtree(pRoot1->left, pRoot2) || HasSubtree(pRoot1->right, pRoot2);
+//	}
+//
+//	bool IsSubtree(TreeNode* pRoot1, TreeNode* pRoot2) {
+//		if (pRoot2 == nullptr)
+//		{
+//			return true;
+//		}
+//		if (pRoot1 == nullptr)
+//		{
+//			return false;
+//		}
+//		if (pRoot1->val == pRoot2->val)
+//		{
+//			return IsSubtree(pRoot1->left, pRoot2->left) && IsSubtree(pRoot1->right, pRoot2->right);
+//		}
+//		return false;
+//	}
+//};
+
+//18
 class Solution {
 public:
-	bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2) {
-		if (pRoot2 == nullptr || pRoot1 == nullptr)
+	void Mirror(TreeNode * pRoot) {
+		if (pRoot == nullptr)
 		{
-			return false;
+			return ;
 		}
-		
-		return IsSubtree(pRoot1, pRoot2) || HasSubtree(pRoot1->left, pRoot2) || HasSubtree(pRoot1->right, pRoot2);
-	}
 
-	bool IsSubtree(TreeNode* pRoot1, TreeNode* pRoot2) {
-		if (pRoot2 == nullptr)
-		{
-			return true;
-		}
-		if (pRoot1 == nullptr)
-		{
-			return false;
-		}
-		if (pRoot1->val == pRoot2->val)
-		{
-			return IsSubtree(pRoot1->left, pRoot2->left) && IsSubtree(pRoot1->right, pRoot2->right);
-		}
-		return false;
+		TreeNode* temp = nullptr;
+		temp = pRoot->left;
+		pRoot->left = pRoot->right;
+		pRoot->right = temp;
+		Mirror(pRoot->left);
+		Mirror(pRoot->right);
 	}
 };
