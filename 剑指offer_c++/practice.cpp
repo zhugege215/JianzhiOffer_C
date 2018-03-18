@@ -402,26 +402,55 @@ struct TreeNode {
 //};
 
 //16
+//class Solution {
+//public:
+//	ListNode * Merge(ListNode* pHead1, ListNode* pHead2) {
+//		if (pHead1 == nullptr)
+//		{
+//			return pHead2;
+//		}
+//		if (pHead2 == nullptr)
+//		{
+//			return pHead1;
+//		}
+//		if (pHead1->val > pHead2->val)
+//		{
+//			pHead2->next = Merge(pHead1, pHead2->next);
+//			return pHead2;
+//		}
+//		else
+//		{
+//			pHead1->next = Merge(pHead1->next, pHead2);
+//			return pHead1;
+//		}
+//	}
+//};
+
+//17
 class Solution {
 public:
-	ListNode * Merge(ListNode* pHead1, ListNode* pHead2) {
-		if (pHead1 == nullptr)
+	bool HasSubtree(TreeNode* pRoot1, TreeNode* pRoot2) {
+		if (pRoot2 == nullptr || pRoot1 == nullptr)
 		{
-			return pHead2;
+			return false;
 		}
-		if (pHead2 == nullptr)
+		
+		return IsSubtree(pRoot1, pRoot2) || HasSubtree(pRoot1->left, pRoot2) || HasSubtree(pRoot1->right, pRoot2);
+	}
+
+	bool IsSubtree(TreeNode* pRoot1, TreeNode* pRoot2) {
+		if (pRoot2 == nullptr)
 		{
-			return pHead1;
+			return true;
 		}
-		if (pHead1->val > pHead2->val)
+		if (pRoot1 == nullptr)
 		{
-			pHead2->next = Merge(pHead1, pHead2->next);
-			return pHead2;
+			return false;
 		}
-		else
+		if (pRoot1->val == pRoot2->val)
 		{
-			pHead1->next = Merge(pHead1->next, pHead2);
-			return pHead1;
+			return IsSubtree(pRoot1->left, pRoot2->left) && IsSubtree(pRoot1->right, pRoot2->right);
 		}
+		return false;
 	}
 };
