@@ -456,19 +456,61 @@ struct TreeNode {
 //};
 
 //18
+//class Solution {
+//public:
+//	void Mirror(TreeNode * pRoot) {
+//		if (pRoot == nullptr)
+//		{
+//			return ;
+//		}
+//
+//		TreeNode* temp = nullptr;
+//		temp = pRoot->left;
+//		pRoot->left = pRoot->right;
+//		pRoot->right = temp;
+//		Mirror(pRoot->left);
+//		Mirror(pRoot->right);
+//	}
+//};
+
+//19
 class Solution {
 public:
-	void Mirror(TreeNode * pRoot) {
-		if (pRoot == nullptr)
-		{
-			return ;
-		}
+	vector<int> printMatrix(vector<vector<int> > matrix) {
+		vector<int> res;
+		res.clear();
 
-		TreeNode* temp = nullptr;
-		temp = pRoot->left;
-		pRoot->left = pRoot->right;
-		pRoot->right = temp;
-		Mirror(pRoot->left);
-		Mirror(pRoot->right);
+		int row = matrix.size();
+		int col = matrix[0].size();
+
+		if (row == 0 || col == 0)
+		{
+			return res;
+		}
+		int top = 0, left = 0, right = col - 1, bottom = row - 1;
+		while (top <= bottom && left <= right)
+		{
+			for (int i = left; i <= right; i++) {
+				res.push_back(matrix[top][i]);
+			}
+			for (int i = top + 1; i <= bottom; i++)
+			{
+				res.push_back(matrix[i][right]);
+			}
+			if (top != bottom)
+			{
+				for (int i = right - 1; i >= left; i--) {
+					res.push_back(matrix[bottom][i]);
+				}
+			}
+			if (left != right)
+			{
+				for (int i = bottom - 1; i > top; i--) {
+					res.push_back(matrix[i][left]);
+				}
+			}
+			top++; left++; right--; bottom--;
+		}
+		return res;
 	}
 };
