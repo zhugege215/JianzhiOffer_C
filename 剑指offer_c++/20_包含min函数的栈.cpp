@@ -1,3 +1,5 @@
+//这道题需要注意  保持两个栈的同步
+
 #include <stack>
 using namespace std;
 

@@ -1,3 +1,6 @@
+//一个函数是不够用的
+//这里又借助了一个函数用来判断是否的子树
+
 struct TreeNode {
 	int val;
 	struct TreeNode* left;
