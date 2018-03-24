@@ -36,12 +36,15 @@ int a[N];
 int main() {
 	ifstream in("file_test.txt");
 	string a,b;
+	int aa;
 	/*while (getline(in, a))
 	{
 		cout << a << endl;
 	}*/
 	in >> a;
 	in >> b;
+	in >> aa;
 	cout << a << endl;
 	cout << b << endl;
+	cout << aa << endl;
 }
