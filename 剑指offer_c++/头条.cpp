@@ -229,44 +229,44 @@ typedef long long ll;
 //}
 
 //µÚÎåÌâ
-using namespace std;
-const int N = 1e5 + 1000;
-typedef pair<int, int> pii;
-
-int main()
-{
-	int n, k, h, temp;
-	cin >> n >> k >> h;
-	vector<int> a(N, 0);
-	vector<bool> vis(N, false);
-	for (int i = 0; i < n; i++)
-	{
-		int temp;
-		cin >> temp;
-		a[temp] = 1;
-	}
-	queue<pii> q;
-	q.push(make_pair(0, 0));
-	int ans = 0;
-	while (!q.empty())
-	{
-		pii p = q.front(); q.pop();
-		if (p.second > k) break;
-		ans = max(ans, p.first);
-		for (int i = 1; i <= h; i++)
-		{
-			if (a[p.first + i] && !vis[p.first + 2*i])
-			{
-				vis[p.first + 2 * i] = true;
-				q.push(make_pair(p.first + 2 * i, p.second + 1));
-			}
-			if (a[p.first - 2 * i] && a[p.first - i] && !vis[p.first - 2 * i])
-			{
-				vis[p.first - 2 * i] = true;
-				q.push(make_pair(p.first - 2 * i, p.second + 1));
-			}
-		}
-	}
-	cout << ans;
-	return 0;
-}
+//using namespace std;
+//const int N = 1e5 + 1000;
+//typedef pair<int, int> pii;
+//
+//int main()
+//{
+//	int n, k, h, temp;
+//	cin >> n >> k >> h;
+//	vector<int> a(N, 0);
+//	vector<bool> vis(N, false);
+//	for (int i = 0; i < n; i++)
+//	{
+//		int temp;
+//		cin >> temp;
+//		a[temp] = 1;
+//	}
+//	queue<pii> q;
+//	q.push(make_pair(0, 0));
+//	int ans = 0;
+//	while (!q.empty())
+//	{
+//		pii p = q.front(); q.pop();
+//		if (p.second > k) break;
+//		ans = max(ans, p.first);
+//		for (int i = 1; i <= h; i++)
+//		{
+//			if (a[p.first + i] && !vis[p.first + 2*i])
+//			{
+//				vis[p.first + 2 * i] = true;
+//				q.push(make_pair(p.first + 2 * i, p.second + 1));
+//			}
+//			if (a[p.first - 2 * i] && a[p.first - i] && !vis[p.first - 2 * i])
+//			{
+//				vis[p.first - 2 * i] = true;
+//				q.push(make_pair(p.first - 2 * i, p.second + 1));
+//			}
+//		}
+//	}
+//	cout << ans;
+//	return 0;
+//}
