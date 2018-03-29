@@ -515,29 +515,51 @@ struct TreeNode {
 //	}
 //};
 
-class Solution {
-public:
-	void push(int value) {
-		data.push(value);
-		if (mins.empty())
-		{
-			mins.push(value);
-		}
-		else
-		{
-			value < mins.top() ? mins.push(value) : mins.push(mins.top());
-		}
-	}
-	void pop() {
-		data.pop();
-		mins.pop();
-	}
-	int top() {
-		return data.top();
-	}
-	int min() {
-		return mins.top();
-	}
-private:
-	stack<int> data, mins;
-};
+//20
+//class Solution {
+//public:
+//	void push(int value) {
+//		data.push(value);
+//		if (mins.empty())
+//		{
+//			mins.push(value);
+//		}
+//		else
+//		{
+//			value < mins.top() ? mins.push(value) : mins.push(mins.top());
+//		}
+//	}
+//	void pop() {
+//		data.pop();
+//		mins.pop();
+//	}
+//	int top() {
+//		return data.top();
+//	}
+//	int min() {
+//		return mins.top();
+//	}
+//private:
+//	stack<int> data, mins;
+//};
+
+//class Solution
+//{
+//public:
+//	bool IsPopOrder(vector<int> pushV, vector<int> popV)
+//	{
+//		if (pushV.size() == 0)
+//			return false;
+//		vector<int> stack;
+//		for (int i = 0, j = 0; i < pushV.size();)
+//		{
+//			stack.push_back(pushV[i++]);
+//			while (popV[j] == stack.back() && j < popV.size())
+//			{
+//				stack.pop_back();
+//				j++;
+//			}
+//		}
+//		return stack.empty();
+//	}
+//};
