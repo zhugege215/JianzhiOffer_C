@@ -74,7 +74,7 @@ int main()
 			pop(s, e);
 			if ((e == '{' && *p == '}') || (e == '[' && *p == ']') || (e == '(' && *p == ')'))
 				p++;
-			else 
+			else
 			{
 				printf("¿®∫≈≤ª∆•≈‰!"); exit(OVERFLOW);
 			}
