@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iostream>
+#include <queue>
 using namespace std;
 struct ListNode {
 	int val;
@@ -543,6 +544,7 @@ struct TreeNode {
 //	stack<int> data, mins;
 //};
 
+//21
 //class Solution
 //{
 //public:
@@ -561,5 +563,63 @@ struct TreeNode {
 //			}
 //		}
 //		return stack.empty();
+//	}
+//};
+
+//22
+//class Solution
+//{
+//public:
+//	vector<int> PrintFromTopToBottom(TreeNode* root)
+//	{
+//		queue<TreeNode*> q;
+//		q.push(root);
+//		vector<int> ans;
+//		while (!q.empty())
+//		{
+//			TreeNode* r = q.front(); q.pop();
+//			if (r == nullptr)
+//			{
+//				continue;
+//			}
+//			ans.push_back(r->val);
+//			q.push(r->left);
+//			q.push(r->right);
+//		}
+//		return ans;
+//	}
+//};
+
+//23
+//class Solution
+//{
+//public:
+//	bool VerifySquenceOfBST(vector<int> sequence)
+//	{
+//		if (!sequence.size())
+//		{
+//			return false;
+//		}
+//		return Judge(sequence, 0, sequence.size() - 1);
+//	}
+//
+//private:
+//	bool Judge(vector<int> sequence, int start, int end)
+//	{
+//		if (start >= end)
+//		{
+//			return true;
+//		}
+//		int mid = end - 1;
+//		while (sequence[mid] > sequence[end] && mid >=start)
+//		{
+//			--mid;
+//		}
+//		for (int j = mid; j >= start; j--)
+//		{
+//			if (sequence[j] > sequence[end])
+//				return false;
+//		}
+//		return Judge(sequence, 0, mid) && Judge(sequence, mid + 1, end - 1);
 //	}
 //};
