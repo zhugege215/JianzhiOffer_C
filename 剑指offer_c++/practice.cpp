@@ -623,3 +623,37 @@ struct TreeNode {
 //		return Judge(sequence, 0, mid) && Judge(sequence, mid + 1, end - 1);
 //	}
 //};
+
+//24
+class Solution
+{
+public:
+	vector<vector<int> > FindPath(TreeNode* root, int expectNumber)
+	{
+		if (root)
+		{
+			dfsFind(root, expectNumber);
+		}
+		return ans;
+	}
+private:
+	vector<vector<int> > ans;
+	vector<int> temp;
+	void dfsFind(TreeNode* root, int val)
+	{
+		temp.push_back(root->val);
+		if (val - root->val == 0 && !root->left && !root->right)
+		{
+			ans.push_back(temp);
+		}
+		if (root->left)
+		{
+			dfsFind(root->left, val - root->val);
+		}
+		if (root->right)
+		{
+			dfsFind(root->right, val - root->val);
+		}
+		temp.pop_back();
+	}
+};
