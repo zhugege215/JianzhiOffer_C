@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <deque>
+#include <algorithm>
 using namespace std;
 
 
@@ -40,4 +41,28 @@ using namespace std;
 //	int a = s.back();
 //	cout << a << endl;
 //	return 0;
+//}
+
+
+//bool cmp_my(const pair<int, int> &p1, const pair<int, int> &p2)
+//{
+//	if (p1.first == p2.first)
+//		return p1.second > p2.second;
+//	else
+//		return p1.first > p2.first;
+//}
+//int main()
+//{
+//	vector<pair<int, int>> machine;
+//	int n, m, tempa, tempb;
+//	for (int i = 0; i < 4; i++)
+//	{
+//		cin >> tempa >> tempb;
+//		machine.push_back(make_pair(tempa, tempb));
+//	}
+//	sort(machine.begin(), machine.end(), cmp_my);
+//	for (auto a: machine)
+//	{
+//		cout << a.first << " " << a.second << endl;
+//	}
 //}
