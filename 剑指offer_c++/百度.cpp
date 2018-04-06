@@ -6,12 +6,12 @@
 #include <vector>
 using namespace std;
 
-int main()
-{
-	string s;
-	getline(cin, s);
-
-}
+//int main()
+//{
+//	string s;
+//	getline(cin, s);
+//
+//}
 
 //int main()
 //{
@@ -47,63 +47,63 @@ int main()
 //}
 typedef long long ll;
 
-int main()
-{
-	ll n1, n2;
-	cin >> n1;
-	string ans;
-	vector <ll> vec1(n1 + 1);
-	for (ll i = 0; i < n1 + 1; i++)
-	{
-		cin >> vec1[i];
-	}
-
-	cin >> n2;
-	vector <ll> vec2(n2 + 1);
-	for (ll i = 0; i < n2 + 1; i++)
-	{
-		cin >> vec2[i];
-	}
-	if (vec1[0] > vec2[0])
-	{
-		ans = '>';
-	}
-	else if(vec1[0] < vec2[0])
-	{
-		ans = '<';
-	}
-	else
-	{
-		int i = 1;
-		for ( ; i < min(n1, n2) + 1; i++)
-		{
-			if (vec1[i] > vec2[i])
-			{
-				ans = '<';
-				break;
-			}
-			else if (vec1[i] < vec2[i])
-			{
-				ans = '>';
-				break;
-			}
-		}
-		if (i == min(n1, n2) + 1)
-		{
-			if (i == (n1 + 1) && i != (n2 + 1))
-			{
-				ans = '>';
-			}
-			else if (i == (n2 + 1) && i != (n1 + 1))
-			{
-				ans = '<';
-			}
-			else
-			{
-				ans = '=';
-			}
-		}
-	}
-	cout << ans << endl;
-	return 0;
-}
+//int main()
+//{
+//	ll n1, n2;
+//	cin >> n1;
+//	string ans;
+//	vector <ll> vec1(n1 + 1);
+//	for (ll i = 0; i < n1 + 1; i++)
+//	{
+//		cin >> vec1[i];
+//	}
+//
+//	cin >> n2;
+//	vector <ll> vec2(n2 + 1);
+//	for (ll i = 0; i < n2 + 1; i++)
+//	{
+//		cin >> vec2[i];
+//	}
+//	if (vec1[0] > vec2[0])
+//	{
+//		ans = '>';
+//	}
+//	else if(vec1[0] < vec2[0])
+//	{
+//		ans = '<';
+//	}
+//	else
+//	{
+//		int i = 1;
+//		for ( ; i < min(n1, n2) + 1; i++)
+//		{
+//			if (vec1[i] > vec2[i])
+//			{
+//				ans = '<';
+//				break;
+//			}
+//			else if (vec1[i] < vec2[i])
+//			{
+//				ans = '>';
+//				break;
+//			}
+//		}
+//		if (i == min(n1, n2) + 1)
+//		{
+//			if (i == (n1 + 1) && i != (n2 + 1))
+//			{
+//				ans = '>';
+//			}
+//			else if (i == (n2 + 1) && i != (n1 + 1))
+//			{
+//				ans = '<';
+//			}
+//			else
+//			{
+//				ans = '=';
+//			}
+//		}
+//	}
+//	cout << ans << endl;
+//	return 0;
+//}

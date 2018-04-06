@@ -9,3 +9,5 @@
 .vs
 *.vcxproj*
 Debug
+*.png
+*.jpg

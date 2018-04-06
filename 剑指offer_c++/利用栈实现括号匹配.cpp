@@ -53,40 +53,40 @@ void pop(SqStack &S, int &e)
 	}
 }
 
-int main()
-{
-	SqStack s;
-	InitStack(s);
-	char ch[100], *p; int e;
-	p = ch;
-	printf(" ‰»Î\n");
-	cin.getline(ch, 99);
-	while (*p)
-	{
-		switch (*p)
-		{
-		case '{':
-		case '[':
-		case '(':push(s, *p++); break;
-		case '}':
-		case ']':
-		case ')':
-			pop(s, e);
-			if ((e == '{' && *p == '}') || (e == '[' && *p == ']') || (e == '(' && *p == ')'))
-				p++;
-			else
-			{
-				printf("¿®∫≈≤ª∆•≈‰!"); exit(OVERFLOW);
-			}
-			break;
-		default:
-			p++;
-		}
-	}
-
-	if (StackEmpty(s))
-		printf("¿®∫≈∆•≈‰≥…π¶");
-	else
-		printf("»±…Ÿ”“¿®∫≈£°");
-	printf("\n");
-}
+//int main()
+//{
+//	SqStack s;
+//	InitStack(s);
+//	char ch[100], *p; int e;
+//	p = ch;
+//	printf(" ‰»Î\n");
+//	cin.getline(ch, 99);
+//	while (*p)
+//	{
+//		switch (*p)
+//		{
+//		case '{':
+//		case '[':
+//		case '(':push(s, *p++); break;
+//		case '}':
+//		case ']':
+//		case ')':
+//			pop(s, e);
+//			if ((e == '{' && *p == '}') || (e == '[' && *p == ']') || (e == '(' && *p == ')'))
+//				p++;
+//			else
+//			{
+//				printf("¿®∫≈≤ª∆•≈‰!"); exit(OVERFLOW);
+//			}
+//			break;
+//		default:
+//			p++;
+//		}
+//	}
+//
+//	if (StackEmpty(s))
+//		printf("¿®∫≈∆•≈‰≥…π¶");
+//	else
+//		printf("»±…Ÿ”“¿®∫≈£°");
+//	printf("\n");
+//}

@@ -104,28 +104,28 @@
 //}
 
 //递推型 + 空间复杂度
-#include <iostream>
-#include <algorithm>
-using namespace std;
-#define MAX 100
-int D[MAX][MAX];
-int n;
-int *summax;
-int main()
-{
-	int i, j;
-	cin >> n;
-	for (i = 1; i <= n; ++j)
-	{
-		for (j = 1; j <= i; ++j)
-		{
-			cin >> D[i][j];
-		}
-	}
-	summax = D[n];
-	for (int i = n - 1; i >= 1; --i)
-		for (int j = 1; j <= i; ++j)
-			summax[j] = max(summax[j], summax[j + 1]) + D[i][j];
-	cout << summax[1] << endl;
-	return 0;
-}
+//#include <iostream>
+//#include <algorithm>
+//using namespace std;
+//#define MAX 100
+//int D[MAX][MAX];
+//int n;
+//int *summax;
+//int main()
+//{
+//	int i, j;
+//	cin >> n;
+//	for (i = 1; i <= n; ++j)
+//	{
+//		for (j = 1; j <= i; ++j)
+//		{
+//			cin >> D[i][j];
+//		}
+//	}
+//	summax = D[n];
+//	for (int i = n - 1; i >= 1; --i)
+//		for (int j = 1; j <= i; ++j)
+//			summax[j] = max(summax[j], summax[j + 1]) + D[i][j];
+//	cout << summax[1] << endl;
+//	return 0;
+//}
