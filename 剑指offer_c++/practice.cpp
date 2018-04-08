@@ -17,6 +17,14 @@ struct TreeNode {
 	TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
+struct RandomListNode {
+	int label;
+	struct RandomListNode *next, *random;
+	RandomListNode(int x) :
+		label(x), next(NULL), random(NULL) {
+	}
+};
+
 //1
 //class Solution {
 //public:
@@ -625,35 +633,72 @@ struct TreeNode {
 //};
 
 //24
-class Solution
-{
-public:
-	vector<vector<int> > FindPath(TreeNode* root, int expectNumber)
-	{
-		if (root)
-		{
-			dfsFind(root, expectNumber);
-		}
-		return ans;
-	}
-private:
-	vector<vector<int> > ans;
-	vector<int> temp;
-	void dfsFind(TreeNode* root, int val)
-	{
-		temp.push_back(root->val);
-		if (val - root->val == 0 && !root->left && !root->right)
-		{
-			ans.push_back(temp);
-		}
-		if (root->left)
-		{
-			dfsFind(root->left, val - root->val);
-		}
-		if (root->right)
-		{
-			dfsFind(root->right, val - root->val);
-		}
-		temp.pop_back();
-	}
-};
+//class Solution
+//{
+//public:
+//	vector<vector<int> > FindPath(TreeNode* root, int expectNumber)
+//	{
+//		if (root)
+//		{
+//			dfsFind(root, expectNumber);
+//		}
+//		return ans;
+//	}
+//private:
+//	vector<vector<int> > ans;
+//	vector<int> temp;
+//	void dfsFind(TreeNode* root, int val)
+//	{
+//		temp.push_back(root->val);
+//		if (val - root->val == 0 && !root->left && !root->right)
+//		{
+//			ans.push_back(temp);
+//		}
+//		if (root->left)
+//		{
+//			dfsFind(root->left, val - root->val);
+//		}
+//		if (root->right)
+//		{
+//			dfsFind(root->right, val - root->val);
+//		}
+//		temp.pop_back();
+//	}
+//};
+
+//25
+//class Solution
+//{
+//public:
+//	RandomListNode * Clone(RandomListNode* pHead)
+//	{
+//		if (!pHead)
+//			return nullptr;
+//		RandomListNode* current = pHead;
+//		while (current)
+//		{
+//			RandomListNode* node = new RandomListNode(current->label);
+//			node->next = current->next;
+//			current->next = node;
+//			current = node->next;
+//		}
+//		current = pHead;
+//		while (current)
+//		{
+//			if (current->random) {
+//				current->next->random = current->random->next;
+//			}
+//			current = current->next->next;
+//		}
+//		current = pHead;
+//		RandomListNode* clone = current->next;
+//		RandomListNode* temp;
+//		while (current->next)
+//		{
+//			temp = current->next;
+//			current->next = current->next->next;
+//			current = temp;
+//		}
+//		return clone;
+//	}
+//};
