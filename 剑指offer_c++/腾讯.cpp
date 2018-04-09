@@ -150,55 +150,55 @@ typedef long long ll;
 
 //注意这里的比较逻辑
 //其次比较不能用加减法
-bool cmp_my(const pair<int, int> &p1, const pair<int, int> &p2)
-{
-	if (p1.first == p2.first)
-		return p1.second > p2.second;
-	else
-		return p1.first > p2.first;
-}
-
-int main()
-{
-	int n, m, tempa, tempb;
-	cin >> n >> m;
-	vector<pair<int, int>> machine;
-	vector<pair<int, int>> task;
-	for (int i = 0; i < n; i++)
-	{
-		cin >> tempa >> tempb;
-		machine.push_back(make_pair(tempa, tempb));
-	}
-	for (int i = 0; i < m; i++)
-	{
-		cin >> tempa >> tempb;
-		task.push_back(make_pair(tempa, tempb));
-	}
-	int cnt[105];
-	memset(cnt, 0, sizeof(int) * 105);
-
-	sort(machine.begin(), machine.end(), cmp_my);
-	sort(task.begin(), task.end(), cmp_my);
-
-	long sum = 0;
-	int j = 0, cnt1 = 0;
-	for (int i = 0; i < m; i++)
-	{
-		while (j < n && machine[j].first >= task[i].first)
-		{
-			cnt[machine[j].second]++;
-			j++;
-		}
-		for (int k = task[i].second; k < 101; k++)
-		{
-			if (cnt[k] != 0)
-			{
-				cnt[k]--;
-				cnt1++;
-				sum += 200 * task[i].first + 3 * task[i].second;
-				break;
-			}
-		}
-	}
-	cout << cnt1 << " " << sum << endl;
-}
+//bool cmp_my(const pair<int, int> &p1, const pair<int, int> &p2)
+//{
+//	if (p1.first == p2.first)
+//		return p1.second > p2.second;
+//	else
+//		return p1.first > p2.first;
+//}
+//
+//int main()
+//{
+//	int n, m, tempa, tempb;
+//	cin >> n >> m;
+//	vector<pair<int, int>> machine;
+//	vector<pair<int, int>> task;
+//	for (int i = 0; i < n; i++)
+//	{
+//		cin >> tempa >> tempb;
+//		machine.push_back(make_pair(tempa, tempb));
+//	}
+//	for (int i = 0; i < m; i++)
+//	{
+//		cin >> tempa >> tempb;
+//		task.push_back(make_pair(tempa, tempb));
+//	}
+//	int cnt[105];
+//	memset(cnt, 0, sizeof(int) * 105);
+//
+//	sort(machine.begin(), machine.end(), cmp_my);
+//	sort(task.begin(), task.end(), cmp_my);
+//
+//	long sum = 0;
+//	int j = 0, cnt1 = 0;
+//	for (int i = 0; i < m; i++)
+//	{
+//		while (j < n && machine[j].first >= task[i].first)
+//		{
+//			cnt[machine[j].second]++;
+//			j++;
+//		}
+//		for (int k = task[i].second; k < 101; k++)
+//		{
+//			if (cnt[k] != 0)
+//			{
+//				cnt[k]--;
+//				cnt1++;
+//				sum += 200 * task[i].first + 3 * task[i].second;
+//				break;
+//			}
+//		}
+//	}
+//	cout << cnt1 << " " << sum << endl;
+//}
