@@ -38,34 +38,9 @@ typedef long long ll;
 //	return 0;
 //}
 
-//int main() {
-//	ifstream in("file_test.txt");
-//	string a,b;
-//	int aa;
-//	/*while (getline(in, a))
-//	{
-//		cout << a << endl;
-//	}*/
-//	in >> a;
-//	in >> b;
-//	in >> aa;
-//	cout << a << endl;
-//	cout << b << endl;
-//	cout << aa << endl;
-//}
 
-//int main() {
-//	map<string, size_t> word_count;
-//	set<string> exclude = {"The", "But", "And", "a"};
-//	string word;
-//	while (cin >> word)       //ctrl + z结束
-//	{
-//		if(exclude.find(word) == exclude.end())
-//			++word_count[word];
-//	}
-//	for (const auto &w : word_count)
-//		cout << w.first << " occurs " << w.second << ((w.second > 1) ? " times" : " time") << endl;
-//}
+
+
 
 //第二题 思路：经过推到，发现是一个搜索过程，答案即为搜索的次数。bfs， 利用队列实现
 //typedef pair<int, int> pii;
