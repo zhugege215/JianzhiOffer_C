@@ -1,3 +1,9 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <fstream>
+using namespace std;
+
 //╤анд╪Ч
 //int main() {
 //	ifstream in("file_test.txt");
