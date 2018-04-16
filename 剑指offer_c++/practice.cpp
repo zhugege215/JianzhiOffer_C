@@ -702,3 +702,37 @@ struct RandomListNode {
 //		return clone;
 //	}
 //};
+
+//26
+//class Solution
+//{
+//public:
+//	TreeNode * Convert(TreeNode* root)
+//	{
+//		if (root == nullptr)
+//			return nullptr;
+//		TreeNode* pre = nullptr;
+//		help(root, pre);
+//
+//		while (root->left)
+//		{
+//			root = root->left;
+//		}
+//		TreeNode* ans = root;
+//		return ans;
+//	}
+//private:
+//	void help(TreeNode* root,TreeNode*& pre)
+//	{
+//		if (root == nullptr)
+//			return;
+//		help(root->left,pre);
+//
+//		root->left = pre;
+//		if (pre)
+//			pre->right = root;
+//		pre = root;
+//
+//		help(root->right, pre);
+//	}
+//};
