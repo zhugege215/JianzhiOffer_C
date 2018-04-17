@@ -739,33 +739,67 @@ struct RandomListNode {
 //};
 
 //27
+//class Solution
+//{
+//public:
+//	vector<string> Permutation(string str)
+//	{
+//		vector<string> ans;
+//		if (str.size() == 0)
+//			return ans;
+//		help(ans, str, 0);
+//		sort(ans.begin(), ans.end());
+//		return ans;
+//	}
+//
+//	void help(vector<string>& ans, string str, int begin)
+//	{
+//		if (begin == str.size() - 1)
+//			ans.push_back(str);
+//		unordered_set<char> us;
+//		for (int i = begin; i < str.size(); i++)
+//		{
+//			if (us.find(str[i]) == us.end())
+//			{
+//				us.insert(str[i]);
+//				swap(str[i], str[begin]);
+//				help(ans, str, begin + 1);
+//				swap(str[i], str[begin]);
+//			}
+//		}
+//	}
+//};
+
+//28
 class Solution
 {
 public:
-	vector<string> Permutation(string str)
+	int MoreThanHalfNum_Solution(vector<int> numbers)
 	{
-		vector<string> ans;
-		if (str.size() == 0)
-			return ans;
-		help(ans, str, 0);
-		sort(ans.begin(), ans.end());
-		return ans;
-	}
-
-	void help(vector<string>& ans, string str, int begin)
-	{
-		if (begin == str.size() - 1)
-			ans.push_back(str);
-		unordered_set<char> us;
-		for (int i = begin; i < str.size(); i++)
+		int n = numbers.size();
+		if (n == 0) return 0;
+		int num = numbers[0], count = 1;
+		for (int i = 1; i < n; i++)
 		{
-			if (us.find(str[i]) == us.end())
+			if (num == numbers[i])
+				count++;
+			else
+				count--;
+			if (count == 0)
 			{
-				us.insert(str[i]);
-				swap(str[i], str[begin]);
-				help(ans, str, begin + 1);
-				swap(str[i], str[begin]);
+				num = numbers[i];
+				count = 1;
 			}
 		}
+
+		count = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (num == numbers[i])
+				count++;
+		}
+		if (count * 2 > n)
+			return num;
+		return 0;
 	}
 };
