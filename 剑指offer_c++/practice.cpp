@@ -1,3 +1,4 @@
+#include <set>
 #include <vector>
 #include <stack>
 #include <stdexcept>
@@ -5,6 +6,7 @@
 #include <iostream>
 #include <queue>
 #include <unordered_set>
+#include <functional>
 using namespace std;
 struct ListNode {
 	int val;
@@ -771,35 +773,71 @@ struct RandomListNode {
 //};
 
 //28
+//class Solution
+//{
+//public:
+//	int MoreThanHalfNum_Solution(vector<int> numbers)
+//	{
+//		int n = numbers.size();
+//		if (n == 0) return 0;
+//		int num = numbers[0], count = 1;
+//		for (int i = 1; i < n; i++)
+//		{
+//			if (num == numbers[i])
+//				count++;
+//			else
+//				count--;
+//			if (count == 0)
+//			{
+//				num = numbers[i];
+//				count = 1;
+//			}
+//		}
+//
+//		count = 0;
+//		for (int i = 0; i < n; i++)
+//		{
+//			if (num == numbers[i])
+//				count++;
+//		}
+//		if (count * 2 > n)
+//			return num;
+//		return 0;
+//	}
+//};
+
 class Solution
 {
 public:
-	int MoreThanHalfNum_Solution(vector<int> numbers)
+	vector<int> GetLeastNumbers_Solution(vector<int> input, int k)
 	{
-		int n = numbers.size();
-		if (n == 0) return 0;
-		int num = numbers[0], count = 1;
-		for (int i = 1; i < n; i++)
+		vector<int> result;
+		int len = input.size();
+		if (input.empty() || k <= 0 || len < k) return result;
+		multiset<int, greater<int> > leastNumbers;
+		multiset<int, greater<int> >::iterator iterGreater;
+
+		vector<int>::iterator iter = input.begin();
+		for (; iter != input.end(); iter++)
 		{
-			if (num == numbers[i])
-				count++;
-			else
-				count--;
-			if (count == 0)
+			if (leastNumbers.size() < k)
 			{
-				num = numbers[i];
-				count = 1;
+				leastNumbers.insert(*iter);
+			}
+			else
+			{
+				iterGreater = leastNumbers.begin();
+				if ((*iter) < (*iterGreater))
+				{
+					leastNumbers.erase(iterGreater);
+					leastNumbers.insert(*iter);
+				}
 			}
 		}
-
-		count = 0;
-		for (int i = 0; i < n; i++)
+		for (auto &ii : leastNumbers)
 		{
-			if (num == numbers[i])
-				count++;
+			result.push_back(ii);
 		}
-		if (count * 2 > n)
-			return num;
-		return 0;
+		return result;
 	}
 };
