@@ -844,25 +844,41 @@ struct RandomListNode {
 //};
 
 //30
-class Solution
-{
-public:
-	int FindGreatestSumOfSubArray(vector<int> array)
-	{
-		if (array.size() == 0) return 0;
-		int sum = array[0], temp_sum = array[0];
-		for (int i = 1; i < array.size(); i++)
-		{
-			temp_sum += array[i];
+//class Solution
+//{
+//public:
+//	int FindGreatestSumOfSubArray(vector<int> array)
+//	{
+//		if (array.size() == 0) return 0;
+//		int sum = array[0], temp_sum = array[0];
+//		for (int i = 1; i < array.size(); i++)
+//		{
+//			temp_sum += array[i];
+//
+//			if (temp_sum > sum)
+//				sum = temp_sum;
+//
+//			if(temp_sum < 0)
+//			{
+//				temp_sum = 0;
+//			}
+//		}
+//		return sum;
+//	}
+//};
 
-			if (temp_sum > sum)
-				sum = temp_sum;
-
-			if(temp_sum < 0)
-			{
-				temp_sum = 0;
-			}
-		}
-		return sum;
-	}
-};
+//31
+//class Solution {
+//public:
+//	int NumberOf1Between1AndN_Solution(int n)
+//	{
+//		int count = 0;
+//		long long i = 1;
+//		for (i = 1; i <= n; i *= 10)
+//		{
+//			int a = n / i, b = n % i;
+//			count = count + (a + 8) / 10 * i + (a % 10 == 1)*(b + 1);
+//		}
+//		return count;
+//	}
+//};
