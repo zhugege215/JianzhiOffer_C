@@ -806,38 +806,63 @@ struct RandomListNode {
 //	}
 //};
 
+//29
+//class Solution
+//{
+//public:
+//	vector<int> GetLeastNumbers_Solution(vector<int> input, int k)
+//	{
+//		vector<int> result;
+//		int len = input.size();
+//		if (input.empty() || k <= 0 || len < k) return result;
+//		multiset<int, greater<int> > leastNumbers;
+//		multiset<int, greater<int> >::iterator iterGreater;
+//
+//		vector<int>::iterator iter = input.begin();
+//		for (; iter != input.end(); iter++)
+//		{
+//			if (leastNumbers.size() < k)
+//			{
+//				leastNumbers.insert(*iter);
+//			}
+//			else
+//			{
+//				iterGreater = leastNumbers.begin();
+//				if ((*iter) < (*iterGreater))
+//				{
+//					leastNumbers.erase(iterGreater);
+//					leastNumbers.insert(*iter);
+//				}
+//			}
+//		}
+//		for (auto &ii : leastNumbers)
+//		{
+//			result.push_back(ii);
+//		}
+//		return result;
+//	}
+//};
+
+//30
 class Solution
 {
 public:
-	vector<int> GetLeastNumbers_Solution(vector<int> input, int k)
+	int FindGreatestSumOfSubArray(vector<int> array)
 	{
-		vector<int> result;
-		int len = input.size();
-		if (input.empty() || k <= 0 || len < k) return result;
-		multiset<int, greater<int> > leastNumbers;
-		multiset<int, greater<int> >::iterator iterGreater;
+		if (array.size() == 0) return 0;
+		int sum = array[0], temp_sum = array[0];
+		for (int i = 1; i < array.size(); i++)
+		{
+			temp_sum += array[i];
 
-		vector<int>::iterator iter = input.begin();
-		for (; iter != input.end(); iter++)
-		{
-			if (leastNumbers.size() < k)
+			if (temp_sum > sum)
+				sum = temp_sum;
+
+			if(temp_sum < 0)
 			{
-				leastNumbers.insert(*iter);
-			}
-			else
-			{
-				iterGreater = leastNumbers.begin();
-				if ((*iter) < (*iterGreater))
-				{
-					leastNumbers.erase(iterGreater);
-					leastNumbers.insert(*iter);
-				}
+				temp_sum = 0;
 			}
 		}
-		for (auto &ii : leastNumbers)
-		{
-			result.push_back(ii);
-		}
-		return result;
+		return sum;
 	}
 };
