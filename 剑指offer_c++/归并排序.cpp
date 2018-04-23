@@ -1,6 +1,7 @@
 #include <Sqlist.h>
 #include <stdlib.h>
-
+void MSort(int SR[], int TR1[], int begin, int end);
+void Merge(int SR[], int TR[], int begin, int mid, int end);
 //void Merge(int SR[], int TR[], int i, int m, int n)
 //{
 //	int j, k, l;
@@ -68,7 +69,7 @@ void MSort(int SR[], int TR1[], int begin, int end)
 	int mid;
 	int TR2[MAXSIZE + 1];
 	if (begin == end)
-		TR1[begin] == SR[begin];
+		TR1[begin] = SR[begin];
 	else
 	{
 		mid = (begin + end) / 2;

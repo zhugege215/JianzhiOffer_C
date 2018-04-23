@@ -57,4 +57,5 @@ int numTrees(int n)
 			nums[x] = nums[i - 1] * nums[x - i];
 		}
 	}
+	return nums[n];
 }

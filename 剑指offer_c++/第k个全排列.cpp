@@ -10,36 +10,36 @@
 
 //利用回溯法
 
-#include <vector>
-using namespace std;
-
-int k;
-int n;
-vector<int> func()
-{
-	vector<int> ans;
-	vector<bool> flag(n + 1, true);
-	dfs(ans, n, flag);
-	return ans;
-}
-
-void dfs(vector<int> &ans, int left, vector<bool> flag) {
-	if (left == 0)
-	{
-		if (k == 0)
-			return;
-		else
-			k--;
-	}
-	for (int i = 1; i < n; i++)
-	{
-		if (flag[i])
-		{
-			ans.push_back(i);//这两步是回溯的进
-			flag[i] = false;//这两步是回溯的进
-			dfs(ans, left - 1, flag);
-			flag[i] = true;//这两步是回溯的回
-			ans.pop_back();//这两步是回溯的回
-		}
-	}
-}
+//#include <vector>
+//using namespace std;
+//
+//int k;
+//int n;
+//vector<int> func()
+//{
+//	vector<int> ans;
+//	vector<bool> flag(n + 1, true);
+//	dfs(ans, n, flag);
+//	return ans;
+//}
+//
+//void dfs(vector<int> &ans, int left, vector<bool> flag) {
+//	if (left == 0)
+//	{
+//		if (k == 0)
+//			return;
+//		else
+//			k--;
+//	}
+//	for (int i = 1; i < n; i++)
+//	{
+//		if (flag[i])
+//		{
+//			ans.push_back(i);//这两步是回溯的进
+//			flag[i] = false;//这两步是回溯的进
+//			dfs(ans, left - 1, flag);
+//			flag[i] = true;//这两步是回溯的回
+//			ans.pop_back();//这两步是回溯的回
+//		}
+//	}
+//}

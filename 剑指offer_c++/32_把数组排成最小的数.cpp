@@ -1,6 +1,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Solution {
@@ -25,3 +26,21 @@ public:
 		return ans;
 	}
 };
+
+
+////经验证，是从小到大排
+//bool cmp(int a, int b)
+//{
+//	return a < b;
+//}
+//
+//int main()
+//{
+//	vector<int> vec = {5,3,4,1,2};
+//	sort(vec.begin(), vec.end(), cmp);
+//	for (auto &ii : vec)
+//	{
+//		cout << ii << " ";
+//	}
+//	return 0;
+//}

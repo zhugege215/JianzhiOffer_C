@@ -1,4 +1,6 @@
 #include <Sqlist.h>
+void QSort(Sqlist *L, int low, int high);
+int Partition(Sqlist *L, int low, int high);
 
 void QuickSort(Sqlist *L)
 {

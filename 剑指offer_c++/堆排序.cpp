@@ -1,4 +1,5 @@
 #include <Sqlist.h>
+extern void swap(Sqlist *L, int i, int j);
 
 //除[s]之外所有均满足堆定义
 void HeapAdjust(Sqlist *L, int s, int m)

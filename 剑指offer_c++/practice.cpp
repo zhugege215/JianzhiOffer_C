@@ -7,6 +7,7 @@
 #include <queue>
 #include <unordered_set>
 #include <functional>
+#include <string>
 using namespace std;
 struct ListNode {
 	int val;
@@ -882,3 +883,31 @@ struct RandomListNode {
 //		return count;
 //	}
 //};
+
+//32
+class Solution 
+{
+public:
+	string PrintMinNumber(vector<int> numbers) 
+	{
+		string s = "";
+		sort(numbers.begin(), numbers.end(), cmp);
+		for (auto &ii : numbers)
+		{
+			s += to_string(ii);
+		}
+		return s;
+	}
+
+	//注意在类中，一定要加static
+	static bool cmp(int a, int b)
+	{
+		string A = "";
+		string B = "";
+		A += to_string(a);
+		A += to_string(b);
+		B += to_string(b);
+		B += to_string(a);
+		return A < B;
+	}
+};

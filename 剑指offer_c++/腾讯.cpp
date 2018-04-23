@@ -148,7 +148,7 @@ typedef long long ll;
 //	}
 //}
 
-//注意这里的比较逻辑
+//注意这里的比较逻辑，从大到小排序
 //其次比较不能用加减法
 //bool cmp_my(const pair<int, int> &p1, const pair<int, int> &p2)
 //{
