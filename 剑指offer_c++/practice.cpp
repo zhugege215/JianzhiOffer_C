@@ -885,29 +885,50 @@ struct RandomListNode {
 //};
 
 //32
-class Solution 
-{
-public:
-	string PrintMinNumber(vector<int> numbers) 
-	{
-		string s = "";
-		sort(numbers.begin(), numbers.end(), cmp);
-		for (auto &ii : numbers)
-		{
-			s += to_string(ii);
-		}
-		return s;
-	}
+//class Solution 
+//{
+//public:
+//	string PrintMinNumber(vector<int> numbers) 
+//	{
+//		string s = "";
+//		sort(numbers.begin(), numbers.end(), cmp);
+//		for (auto &ii : numbers)
+//		{
+//			s += to_string(ii);
+//		}
+//		return s;
+//	}
+//
+//	//注意在类中，一定要加static
+//	static bool cmp(int a, int b)
+//	{
+//		string A = "";
+//		string B = "";
+//		A += to_string(a);
+//		A += to_string(b);
+//		B += to_string(b);
+//		B += to_string(a);
+//		return A < B;
+//	}
+//};
 
-	//注意在类中，一定要加static
-	static bool cmp(int a, int b)
-	{
-		string A = "";
-		string B = "";
-		A += to_string(a);
-		A += to_string(b);
-		B += to_string(b);
-		B += to_string(a);
-		return A < B;
-	}
-};
+//33
+//class Solution
+//{
+//public:
+//	int GetUglyNumber_Solution(int index)
+//	{
+//		if (index <= 0) return 0;
+//		vector<int> ans(index);
+//		int t2 = 0, t3 = 0, t5 = 0;
+//		ans[0] = 1;
+//		for (int i = 1; i < index; i++)
+//		{
+//			ans[i] = min(ans[t2] * 2, min(ans[t3] * 3, ans[t5] * 5));
+//			if (ans[i] == ans[t2] * 2) t2++;
+//			if (ans[i] == ans[t3] * 3) t3++;
+//			if (ans[i] == ans[t5] * 5) t5++;
+//		}
+//		return ans[index - 1];
+//	}
+//};
