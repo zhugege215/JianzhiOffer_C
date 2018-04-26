@@ -8,6 +8,7 @@
 #include <unordered_set>
 #include <functional>
 #include <string>
+#include <map>
 using namespace std;
 struct ListNode {
 	int val;
@@ -932,3 +933,43 @@ struct RandomListNode {
 //		return ans[index - 1];
 //	}
 //};
+
+//34
+//class Solution
+//{
+//public:
+//	int FirstNotRepeatingChar(string str)
+//	{
+//		map<char, int> mp;
+//		for (auto i = 0; i < str.size(); i++)
+//		{
+//			mp[str[i]]++;
+//		}
+//		for (auto i = 0; i < str.size(); i++)
+//		{
+//			if (mp[str[i]] == 1)
+//				return i;
+//		}
+//		return -1;
+//	}
+//};
+
+//55
+class Solution
+{
+public:
+	ListNode * EntryNodeOfLoop(ListNode* pHead)
+	{
+		if (pHead == nullptr || pHead->next == nullptr)
+			return nullptr;
+		ListNode *pre = pHead;
+		ListNode *pos = pHead->next;
+		while (pos)
+		{
+			pre->next = nullptr;
+			pre = pos;
+			pos = pos->next;
+		}
+		return pre;
+	}
+};

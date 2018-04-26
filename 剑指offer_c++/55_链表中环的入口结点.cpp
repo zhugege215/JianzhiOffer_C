@@ -20,3 +20,32 @@ public:
 		return previous;
 	}
 };
+
+class Solution2
+{
+public:
+	ListNode * EntryNodeOfLoop(ListNode* pHead)
+	{
+		if (pHead == nullptr || pHead->next == nullptr)
+			return nullptr;
+		ListNode *p1 = pHead;
+		ListNode *p2 = pHead;
+		while (p2 != nullptr && p2->next != nullptr)
+		{
+			p1 = p1->next;
+			p2 = p2->next->next;
+			if (p1 == p2)
+			{
+				p2 = pHead;
+				while (p1 != p2)
+				{
+					p1 = p1->next;
+					p2 = p2->next;
+				}
+				if (p1 == p2)
+					return p1;
+			}
+		}
+		return nullptr;
+	}
+};
