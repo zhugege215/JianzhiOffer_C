@@ -955,21 +955,76 @@ struct RandomListNode {
 //};
 
 //55
+//class Solution
+//{
+//public:
+//	ListNode * EntryNodeOfLoop(ListNode* pHead)
+//	{
+//		if (pHead == nullptr || pHead->next == nullptr)
+//			return nullptr;
+//		ListNode *pre = pHead;
+//		ListNode *pos = pHead->next;
+//		while (pos)
+//		{
+//			pre->next = nullptr;
+//			pre = pos;
+//			pos = pos->next;
+//		}
+//		return pre;
+//	}
+//};
+
+//35
 class Solution
 {
 public:
-	ListNode * EntryNodeOfLoop(ListNode* pHead)
+	int InversePairs(vector<int> data)
 	{
-		if (pHead == nullptr || pHead->next == nullptr)
-			return nullptr;
-		ListNode *pre = pHead;
-		ListNode *pos = pHead->next;
-		while (pos)
+		int length = data.size();
+		if (length <= 0)
+			return 0;
+		vector<int> copy;
+		for (int i = 0; i < length; ++i)
 		{
-			pre->next = nullptr;
-			pre = pos;
-			pos = pos->next;
+			copy.push_back(data[i]);
 		}
-		return pre;
+		
+		long long count = InversePairsCore(data, copy, 0, length - 1);
+		return count % 1000000007;
+	}
+
+	long long InversePairsCore(vector<int> &data, vector<int> &copy, int start, int end)
+	{
+		if(start == end)
+		{
+			copy[start] = data[start];
+			return 0;
+		}
+
+		int length = (end - start) / 2;
+		long long left = InversePairsCore(copy, data, start, start + length);
+		long long right = InversePairsCore(copy, data, start+length+1, end);
+
+		int i = start + length;
+		int j = end;
+		int indexcopy = end;
+		long long count = 0;
+		while (i >= start && j >= start+length+1)
+		{
+			if (data[i] > data[j])
+			{
+				count = count + j - start - length;
+				copy[indexcopy--] = data[i--];
+			}
+			else
+			{
+				copy[indexcopy--] = data[j--];
+			}
+		}
+		for (; i >= start; i--)
+			copy[indexcopy--] = data[i];
+		for (; j >= start + length + 1; j--)
+			copy[indexcopy--] = data[j];
+		return left + right + count;
 	}
 };

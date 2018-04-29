@@ -1,5 +1,7 @@
 #include <Sqlist.h>
 #include <stdlib.h>
+#include <vector>
+using namespace std;
 void MSort(int SR[], int TR1[], int begin, int end);
 void Merge(int SR[], int TR[], int begin, int mid, int end);
 //void Merge(int SR[], int TR[], int i, int m, int n)
@@ -59,6 +61,7 @@ void Merge(int SR[], int TR[], int begin, int mid, int end);
 //}
 
 //递归实现
+//注意，递归的归并排序需要利用到3个数组，即原始数组，中间结果数组和最后返回结果的数组
 void MergeSort(Sqlist *L)
 {
 	MSort(L->r, L->r, 1, L->length);
@@ -84,7 +87,7 @@ void Merge(int SR[], int TR[], int begin, int mid, int end)
 	int i,j;
 	for (i = begin, j = mid + 1; begin <= mid && j <= end; i++)
 	{
-		if (SR[begin] < TR[j])
+		if (SR[begin] < SR[j])
 			TR[i] = SR[begin++];
 		else
 			TR[i] = SR[j++];
@@ -99,4 +102,51 @@ void Merge(int SR[], int TR[], int begin, int mid, int end)
 		for (int l = 0; l <= end - j; l++)
 			TR[i + l] = SR[j + l];
 	}
+}
+
+//这里用的是c语言中的数组表示形式，如果使用c++的容器的话，需要引用。详见35：数组中的逆序对
+void MergeSort(vector<int> data)
+{
+	int length = data.size();
+	if (length <= 0)
+		return ;
+	vector<int> copy;
+	for (int i = 0; i < length; ++i)
+	{
+		copy.push_back(data[i]);
+	}
+	MSort(data, copy, 0, length-1);
+}
+
+void MSort(vector<int> &data, vector<int> &copy, int start, int end)
+{
+	if (start == end)
+	{
+		copy[start] = data[start];
+	}
+	else
+	{
+		int length = (end - start) / 2;
+		MSort(copy, data, start, start + length);
+		MSort(copy, data, start + length + 1, end);
+		Merge(data, copy, start, length, end);
+	}
+}
+
+void Merge(vector<int> &data, vector<int> &copy, int start, int length, int end)
+{
+	int i, j;
+	int mid = start + length;
+	for (i = start, j = start + length + 1; i <= mid && j <= end; start++)
+	{
+		if (data[i] < data[j])
+			copy[start] = data[i++];
+		else
+			copy[start] = data[j++];
+	}
+
+	for (; i <= mid; i++)
+		copy[start++] = data[i];
+	for (; j <= end; j++)
+		copy[start++] = data[j];
 }
