@@ -975,56 +975,113 @@ struct RandomListNode {
 //};
 
 //35
+//class Solution
+//{
+//public:
+//	int InversePairs(vector<int> data)
+//	{
+//		int length = data.size();
+//		if (length <= 0)
+//			return 0;
+//		vector<int> copy;
+//		for (int i = 0; i < length; ++i)
+//		{
+//			copy.push_back(data[i]);
+//		}
+//		
+//		long long count = InversePairsCore(data, copy, 0, length - 1);
+//		return count % 1000000007;
+//	}
+//
+//	long long InversePairsCore(vector<int> &data, vector<int> &copy, int start, int end)
+//	{
+//		if(start == end)
+//		{
+//			copy[start] = data[start];
+//			return 0;
+//		}
+//
+//		int length = (end - start) / 2;
+//		long long left = InversePairsCore(copy, data, start, start + length);
+//		long long right = InversePairsCore(copy, data, start+length+1, end);
+//
+//		int i = start + length;
+//		int j = end;
+//		int indexcopy = end;
+//		long long count = 0;
+//		while (i >= start && j >= start+length+1)
+//		{
+//			if (data[i] > data[j])
+//			{
+//				count = count + j - start - length;
+//				copy[indexcopy--] = data[i--];
+//			}
+//			else
+//			{
+//				copy[indexcopy--] = data[j--];
+//			}
+//		}
+//		for (; i >= start; i--)
+//			copy[indexcopy--] = data[i];
+//		for (; j >= start + length + 1; j--)
+//			copy[indexcopy--] = data[j];
+//		return left + right + count;
+//	}
+//};
+
+//36
 class Solution
 {
 public:
-	int InversePairs(vector<int> data)
+	ListNode * FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2)
 	{
-		int length = data.size();
-		if (length <= 0)
-			return 0;
-		vector<int> copy;
-		for (int i = 0; i < length; ++i)
+		int len1 = len(pHead1);
+		int len2 = len(pHead2);
+		if (len1 >= len2)
 		{
-			copy.push_back(data[i]);
+			pHead1 = golen(pHead1, len1 - len2);
 		}
-		
-		long long count = InversePairsCore(data, copy, 0, length - 1);
-		return count % 1000000007;
-	}
-
-	long long InversePairsCore(vector<int> &data, vector<int> &copy, int start, int end)
-	{
-		if(start == end)
+		else
 		{
-			copy[start] = data[start];
-			return 0;
+			pHead2 = golen(pHead2, len2 - len1);
 		}
-
-		int length = (end - start) / 2;
-		long long left = InversePairsCore(copy, data, start, start + length);
-		long long right = InversePairsCore(copy, data, start+length+1, end);
-
-		int i = start + length;
-		int j = end;
-		int indexcopy = end;
-		long long count = 0;
-		while (i >= start && j >= start+length+1)
+		while (pHead1)
 		{
-			if (data[i] > data[j])
+			if (pHead1 == pHead2)
 			{
-				count = count + j - start - length;
-				copy[indexcopy--] = data[i--];
+				return pHead1;
 			}
 			else
 			{
-				copy[indexcopy--] = data[j--];
+				pHead1 = pHead1->next;
+				pHead2 = pHead2->next;
 			}
 		}
-		for (; i >= start; i--)
-			copy[indexcopy--] = data[i];
-		for (; j >= start + length + 1; j--)
-			copy[indexcopy--] = data[j];
-		return left + right + count;
+		return nullptr;
+	}
+
+	int len(ListNode* p)
+	{
+		int sum = 0;
+		if (!p)
+			return sum;
+		while (p)
+		{
+			sum++;
+			p = p->next;
+		}
+		return sum;
+	}
+
+	ListNode* golen(ListNode* p, int len)
+	{
+		if (len == 0)
+			return p;
+		while (len)
+		{
+			p = p->next;
+			len--;
+		}
+		return p;
 	}
 };
