@@ -105,6 +105,9 @@ void Merge(int SR[], int TR[], int begin, int mid, int end)
 }
 
 //这里用的是c语言中的数组表示形式，如果使用c++的容器的话，需要引用。详见35：数组中的逆序对
+void MSort(vector<int> &data, vector<int> &copy, int start, int end);
+void Merge(vector<int> &data, vector<int> &copy, int start, int length, int end);
+
 void MergeSort(vector<int> data)
 {
 	int length = data.size();

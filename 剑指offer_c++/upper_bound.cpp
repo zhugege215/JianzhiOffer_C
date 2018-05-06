@@ -16,4 +16,5 @@ int upper_bound(int *array, int size, int key)
 			len = half;
 		}
 	}
+	return first;
 }

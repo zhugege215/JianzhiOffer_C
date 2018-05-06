@@ -1,5 +1,7 @@
 #include <Sqlist.h>
-extern void swap(Sqlist *L, int i, int j);
+#include <vector>
+#include <algorithm>
+using namespace std;
 
 //除[s]之外所有均满足堆定义
 void HeapAdjust(Sqlist *L, int s, int m)
@@ -32,5 +34,36 @@ void HeapSort(Sqlist *L)
 	{
 		swap(L, 1, i);
 		HeapAdjust(L, 1, i - 1);
+	}
+}
+
+void core(vector<int> &ans, int start, int len)
+{
+	int temp, j;
+	temp = ans[start];
+	for (j = 2 * start + 1; j <= len; j = 2 * j + 1)
+	{
+		if (j < len && ans[j] < ans[j + 1])
+			j++;
+		if (temp > ans[j])
+			break;
+		ans[start] = ans[j];
+		start = j;
+	}
+	ans[start] = temp;
+}
+
+void heapsort(vector<int> ans)
+{
+	int i;
+	for (i = ans.size() / 2 - 1; i >= 0; i--)
+	{
+		core(ans, i, ans.size() - 1);
+	}
+
+	for (i = ans.size() - 1; i > 0; i--)
+	{
+		swap(ans[0], ans[i]);
+		core(ans, 0, i - 1);
 	}
 }
