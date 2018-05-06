@@ -1,6 +1,7 @@
 #include <Sqlist.h>
 #include <stdlib.h>
 #include <vector>
+#include <iostream>
 using namespace std;
 void MSort(int SR[], int TR1[], int begin, int end);
 void Merge(int SR[], int TR[], int begin, int mid, int end);
@@ -119,6 +120,12 @@ void MergeSort(vector<int> data)
 		copy.push_back(data[i]);
 	}
 	MSort(data, copy, 0, length-1);
+
+	for (int i = 0; i < length; i++)
+	{
+		cout << copy[i] << " ";
+	}
+	cout << endl;
 }
 
 void MSort(vector<int> &data, vector<int> &copy, int start, int end)
@@ -153,3 +160,11 @@ void Merge(vector<int> &data, vector<int> &copy, int start, int length, int end)
 	for (; j <= end; j++)
 		copy[start++] = data[j];
 }
+
+//²âÊÔÍ¨¹ý£¡£¨^_^£©
+//int main()
+//{
+//	vector<int> data = { 9,6,7,22,20,33,16,20 };
+//	MergeSort(data);
+//	return 0;
+//}

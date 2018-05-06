@@ -1,4 +1,9 @@
 #include <Sqlist.h>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
 void QSort(Sqlist *L, int low, int high);
 int Partition(Sqlist *L, int low, int high);
 
@@ -48,4 +53,37 @@ int Partition(Sqlist *L, int low, int high)
 	}
 	L->r[low] = L->r[0];
 	return low;
+}
+
+
+int partition(vector<int> &ans, int low, int high)
+{
+	int temp;
+	temp = ans[low];
+	while (low < high)
+	{
+		while (low < high && ans[high] >= temp)
+			high--;
+		swap(ans[low], ans[high]);
+		while (low < high && ans[low] <= temp)
+			low++;
+		swap(ans[low], ans[high]);
+	}
+	return low;
+}
+
+void qsort(vector<int> &ans, int low, int high)
+{
+	int pivot;
+	if (low < high)
+	{
+		pivot = partition(ans, low, high);
+		qsort(ans, low, pivot - 1);
+		qsort(ans, pivot + 1, high);
+	}
+}
+
+void quicksort(vector<int> ans)
+{
+	qsort(ans, 1, ans.size());
 }
