@@ -18,3 +18,5 @@ int lower_bound(int *array, int size, int key)
 	}
 	return first;
 }
+
+// 二分法  37题

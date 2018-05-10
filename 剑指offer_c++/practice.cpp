@@ -1030,58 +1030,108 @@ struct RandomListNode {
 //};
 
 //36
+//class Solution
+//{
+//public:
+//	ListNode * FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2)
+//	{
+//		int len1 = len(pHead1);
+//		int len2 = len(pHead2);
+//		if (len1 >= len2)
+//		{
+//			pHead1 = golen(pHead1, len1 - len2);
+//		}
+//		else
+//		{
+//			pHead2 = golen(pHead2, len2 - len1);
+//		}
+//		while (pHead1)
+//		{
+//			if (pHead1 == pHead2)
+//			{
+//				return pHead1;
+//			}
+//			else
+//			{
+//				pHead1 = pHead1->next;
+//				pHead2 = pHead2->next;
+//			}
+//		}
+//		return nullptr;
+//	}
+//
+//	int len(ListNode* p)
+//	{
+//		int sum = 0;
+//		if (!p)
+//			return sum;
+//		while (p)
+//		{
+//			sum++;
+//			p = p->next;
+//		}
+//		return sum;
+//	}
+//
+//	ListNode* golen(ListNode* p, int len)
+//	{
+//		if (len == 0)
+//			return p;
+//		while (len)
+//		{
+//			p = p->next;
+//			len--;
+//		}
+//		return p;
+//	}
+//};
+
+//37
 class Solution
 {
 public:
-	ListNode * FindFirstCommonNode(ListNode* pHead1, ListNode* pHead2)
+	int GetNumberOfK(vector<int> data, int k)
 	{
-		int len1 = len(pHead1);
-		int len2 = len(pHead2);
-		if (len1 >= len2)
+		int length = data.size();
+		if (length <= 0)
+			return 0;
+		int f_appear = get_f(data, k, 0, length - 1);
+		int l_appear = get_l(data, k, 0, length - 1);
+		if (f_appear != -1 && l_appear != -1)
 		{
-			pHead1 = golen(pHead1, len1 - len2);
+			return l_appear - f_appear + 1;
 		}
+		return 0;
+	}
+
+	int get_f(vector<int> data, int k, int start, int end)
+	{
+		if (start > end)
+			return -1;
+		int mid = (start + end) / 2;
+		if (k > data[mid])
+			return get_f(data, k, mid + 1, end);
+		else if (k < data[mid])
+			return get_f(data, k, start, mid - 1);
+		else if (mid - 1 >= 0 && data[mid - 1] == k)
+			return get_f(data, k, start, mid - 1);
 		else
+			return mid;
+	}
+
+	int get_l(vector<int> data, int k, int start, int end)
+	{
+		if (start > end)
+			return -1;
+		int mid = (start + end) / 2;
+		while (start <= end)
 		{
-			pHead2 = golen(pHead2, len2 - len1);
-		}
-		while (pHead1)
-		{
-			if (pHead1 == pHead2)
-			{
-				return pHead1;
-			}
+			if (data[mid] <= k)
+				start = mid + 1;
 			else
-			{
-				pHead1 = pHead1->next;
-				pHead2 = pHead2->next;
-			}
+				end = mid - 1;
+			mid = (start + end) / 2;
 		}
-		return nullptr;
-	}
-
-	int len(ListNode* p)
-	{
-		int sum = 0;
-		if (!p)
-			return sum;
-		while (p)
-		{
-			sum++;
-			p = p->next;
-		}
-		return sum;
-	}
-
-	ListNode* golen(ListNode* p, int len)
-	{
-		if (len == 0)
-			return p;
-		while (len)
-		{
-			p = p->next;
-			len--;
-		}
-		return p;
+		return end;
 	}
 };
