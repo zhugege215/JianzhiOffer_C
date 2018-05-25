@@ -1087,51 +1087,96 @@ struct RandomListNode {
 //};
 
 //37
+//class Solution
+//{
+//public:
+//	int GetNumberOfK(vector<int> data, int k)
+//	{
+//		int length = data.size();
+//		if (length <= 0)
+//			return 0;
+//		int f_appear = get_f(data, k, 0, length - 1);
+//		int l_appear = get_l(data, k, 0, length - 1);
+//		if (f_appear != -1 && l_appear != -1)
+//		{
+//			return l_appear - f_appear + 1;
+//		}
+//		return 0;
+//	}
+//
+//	int get_f(vector<int> data, int k, int start, int end)
+//	{
+//		if (start > end)
+//			return -1;
+//		int mid = (start + end) / 2;
+//		if (k > data[mid])
+//			return get_f(data, k, mid + 1, end);
+//		else if (k < data[mid])
+//			return get_f(data, k, start, mid - 1);
+//		else if (mid - 1 >= 0 && data[mid - 1] == k)
+//			return get_f(data, k, start, mid - 1);
+//		else
+//			return mid;
+//	}
+//
+//	int get_l(vector<int> data, int k, int start, int end)
+//	{
+//		if (start > end)
+//			return -1;
+//		int mid = (start + end) / 2;
+//		while (start <= end)
+//		{
+//			if (data[mid] <= k)
+//				start = mid + 1;
+//			else
+//				end = mid - 1;
+//			mid = (start + end) / 2;
+//		}
+//		return end;
+//	}
+//};
+
+//38
+//class Solution
+//{
+//public:
+//	int TreeDepth(TreeNode* pRoot)
+//	{
+//		if (pRoot == nullptr)
+//			return 0;
+//		int left = TreeDepth(pRoot->left);
+//		int right = TreeDepth(pRoot->right);
+//		return max(left + 1, right + 1);
+//	}
+//};
+
+//38 ·Çµİ¹é
 class Solution
 {
 public:
-	int GetNumberOfK(vector<int> data, int k)
+	int TreeDepth(TreeNode* pRoot)
 	{
-		int length = data.size();
-		if (length <= 0)
+		if (pRoot == nullptr)
 			return 0;
-		int f_appear = get_f(data, k, 0, length - 1);
-		int l_appear = get_l(data, k, 0, length - 1);
-		if (f_appear != -1 && l_appear != -1)
+		queue<TreeNode*> q;
+		q.push(pRoot);
+		int depth = 0, count = 0, nextCount = 1;
+		while (!q.empty())
 		{
-			return l_appear - f_appear + 1;
+			TreeNode* top = q.front();
+			q.pop();
+			count++;
+			if (top->left)
+				q.push(top->left);
+			if (top->right)
+				q.push(top->right);
+			if (count == nextCount)
+			{
+				depth++;
+				count = 0;
+				nextCount = q.size();
+			}
 		}
-		return 0;
-	}
-
-	int get_f(vector<int> data, int k, int start, int end)
-	{
-		if (start > end)
-			return -1;
-		int mid = (start + end) / 2;
-		if (k > data[mid])
-			return get_f(data, k, mid + 1, end);
-		else if (k < data[mid])
-			return get_f(data, k, start, mid - 1);
-		else if (mid - 1 >= 0 && data[mid - 1] == k)
-			return get_f(data, k, start, mid - 1);
-		else
-			return mid;
-	}
-
-	int get_l(vector<int> data, int k, int start, int end)
-	{
-		if (start > end)
-			return -1;
-		int mid = (start + end) / 2;
-		while (start <= end)
-		{
-			if (data[mid] <= k)
-				start = mid + 1;
-			else
-				end = mid - 1;
-			mid = (start + end) / 2;
-		}
-		return end;
+		return depth;
 	}
 };
