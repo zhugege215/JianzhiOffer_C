@@ -1,4 +1,6 @@
 #include <string.h>
+//参考
+//https://blog.csdn.net/v_july_v/article/details/7041827
 
 //暴力解法
 int ViolentMatch(char* s, char* p)
@@ -51,4 +53,26 @@ int KmpSearch(char* s, char* p)
 		return i - j;
 	else
 		return -1;
+}
+
+//next数组求解
+void GetNext(char* p, int next[])
+{
+	int pLen = strlen(p);
+	next[0] = -1;
+	int k = -1;
+	int j = 0;
+	while (j < pLen - 1)
+	{
+		if (k == -1 || p[j] == p[k])
+		{
+			++k;
+			++j;
+			next[j] = k;
+		}
+		else
+		{
+			k = next[k];
+		}
+	}
 }
