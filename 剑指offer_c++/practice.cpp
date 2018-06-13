@@ -9,6 +9,7 @@
 #include <functional>
 #include <string>
 #include <map>
+#include <cmath>
 using namespace std;
 struct ListNode {
 	int val;
@@ -1151,32 +1152,100 @@ struct RandomListNode {
 //};
 
 //38 ·ÇµÝ¹é
-class Solution
-{
+//class Solution
+//{
+//public:
+//	int TreeDepth(TreeNode* pRoot)
+//	{
+//		if (pRoot == nullptr)
+//			return 0;
+//		queue<TreeNode*> q;
+//		q.push(pRoot);
+//		int depth = 0, count = 0, nextCount = 1;
+//		while (!q.empty())
+//		{
+//			TreeNode* top = q.front();
+//			q.pop();
+//			count++;
+//			if (top->left)
+//				q.push(top->left);
+//			if (top->right)
+//				q.push(top->right);
+//			if (count == nextCount)
+//			{
+//				depth++;
+//				count = 0;
+//				nextCount = q.size();
+//			}
+//		}
+//		return depth;
+//	}
+//};
+
+//39
+//class Solution
+//{
+//public:
+//	bool IsBalanced_Solution(TreeNode* pRoot)
+//	{
+//		getDepth(pRoot);
+//		return isBalenced;
+//	}
+//
+//	int getDepth(TreeNode* pRoot)
+//	{
+//		if (pRoot == nullptr)
+//			return 0;
+//		int left = getDepth(pRoot->left);
+//		int right = getDepth(pRoot->right);
+//		if (abs(left - right) > 1)
+//		{
+//			isBalenced = false;
+//			
+//		}
+//		return right > left ? right + 1 : left + 1;
+//	}
+//
+//private:
+//	bool isBalenced = true;
+//};
+
+//40
+class Solution {
 public:
-	int TreeDepth(TreeNode* pRoot)
+	void FindNumsAppearOnce(vector<int> data, int* num1, int *num2)
 	{
-		if (pRoot == nullptr)
-			return 0;
-		queue<TreeNode*> q;
-		q.push(pRoot);
-		int depth = 0, count = 0, nextCount = 1;
-		while (!q.empty())
+		if (data.size() < 2)
+			return;
+		int size = data.size();
+		int temp = data[0];
+		for (int i = 1; i < size; i++)
 		{
-			TreeNode* top = q.front();
-			q.pop();
-			count++;
-			if (top->left)
-				q.push(top->left);
-			if (top->right)
-				q.push(top->right);
-			if (count == nextCount)
+			temp = temp ^ data[i];
+		}
+		if (temp == 0)
+			return;
+		int index = 0;
+		while ((temp & 1) == 0)
+		{
+			temp = temp >> 1;
+			++index;
+		}
+		*num1 = *num2 = 0;
+		for (int i = 0; i < size; i++)
+		{
+			if(IsBit(data[i], index))
+				*num1 ^= data[i];
+			else
 			{
-				depth++;
-				count = 0;
-				nextCount = q.size();
+				*num2 ^= data[i];
 			}
 		}
-		return depth;
+	}
+
+	bool IsBit(int num, int index)
+	{
+		num = num >> index;
+		return (num & 1);
 	}
 };
