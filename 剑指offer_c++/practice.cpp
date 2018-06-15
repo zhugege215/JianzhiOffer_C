@@ -1234,7 +1234,7 @@ public:
 		*num1 = *num2 = 0;
 		for (int i = 0; i < size; i++)
 		{
-			if(IsBit(data[i], index))
+			if (IsBit(data[i], index))
 				*num1 ^= data[i];
 			else
 			{
@@ -1247,5 +1247,66 @@ public:
 	{
 		num = num >> index;
 		return (num & 1);
+	}
+};
+
+//41
+//class Solution
+//{
+//public:
+//	vector<vector<int> > FindContinuousSequence(int sum)
+//	{
+//		vector<vector<int> > res;
+//		if (sum < 3)
+//			return res;
+//		int mid = (sum + 1) >> 1;
+//		int begin = 1;
+//		int end = 2;
+//		int cur = begin + end;
+//		while (begin < mid && end < sum)
+//		{
+//			while (cur > sum)
+//			{
+//				cur -= begin;
+//				begin++;
+//			}
+//			if (cur == sum)
+//				InsertRes(begin, end, res);
+//			end++;
+//			cur += end;
+//		}
+//		return res;
+//	}
+//
+//	void InsertRes(int begin, int end, vector<vector<int> > &res)
+//	{
+//		vector<int> temp;
+//		for (int i = begin; i <= end; i++)
+//			temp.push_back(i);
+//		res.push_back(temp);
+//	}
+//};
+
+//41
+//·½·¨2
+class Solution
+{
+public:
+	vector<vector<int> > FindContinuousSequence(int sum)
+	{
+		vector<vector<int> > res;
+		for (int n = (int)sqrt(sum*2); n > 1; n--)
+		{
+			if ((n & 1) == 1 && (sum % n) == 0 || (sum % n) * 2 == n)
+			{
+				vector<int> temp;
+				for (int j = 0, k = (sum / n) - (n - 1) / 2; j < n; j++, k++)
+				{
+					temp.push_back(k);
+				}
+				res.push_back(temp);
+			}
+		}
+		return res;
 	}
 };
