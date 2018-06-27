@@ -1211,44 +1211,44 @@ struct RandomListNode {
 //};
 
 //40
-class Solution {
-public:
-	void FindNumsAppearOnce(vector<int> data, int* num1, int *num2)
-	{
-		if (data.size() < 2)
-			return;
-		int size = data.size();
-		int temp = data[0];
-		for (int i = 1; i < size; i++)
-		{
-			temp = temp ^ data[i];
-		}
-		if (temp == 0)
-			return;
-		int index = 0;
-		while ((temp & 1) == 0)
-		{
-			temp = temp >> 1;
-			++index;
-		}
-		*num1 = *num2 = 0;
-		for (int i = 0; i < size; i++)
-		{
-			if (IsBit(data[i], index))
-				*num1 ^= data[i];
-			else
-			{
-				*num2 ^= data[i];
-			}
-		}
-	}
-
-	bool IsBit(int num, int index)
-	{
-		num = num >> index;
-		return (num & 1);
-	}
-};
+//class Solution {
+//public:
+//	void FindNumsAppearOnce(vector<int> data, int* num1, int *num2)
+//	{
+//		if (data.size() < 2)
+//			return;
+//		int size = data.size();
+//		int temp = data[0];
+//		for (int i = 1; i < size; i++)
+//		{
+//			temp = temp ^ data[i];
+//		}
+//		if (temp == 0)
+//			return;
+//		int index = 0;
+//		while ((temp & 1) == 0)
+//		{
+//			temp = temp >> 1;
+//			++index;
+//		}
+//		*num1 = *num2 = 0;
+//		for (int i = 0; i < size; i++)
+//		{
+//			if (IsBit(data[i], index))
+//				*num1 ^= data[i];
+//			else
+//			{
+//				*num2 ^= data[i];
+//			}
+//		}
+//	}
+//
+//	bool IsBit(int num, int index)
+//	{
+//		num = num >> index;
+//		return (num & 1);
+//	}
+//};
 
 //41
 //class Solution
@@ -1289,24 +1289,65 @@ public:
 
 //41
 //·½·¨2
+//class Solution
+//{
+//public:
+//	vector<vector<int> > FindContinuousSequence(int sum)
+//	{
+//		vector<vector<int> > res;
+//		for (int n = (int)sqrt(sum*2); n > 1; n--)
+//		{
+//			if ((n & 1) == 1 && (sum % n) == 0 || (sum % n) * 2 == n)
+//			{
+//				vector<int> temp;
+//				for (int j = 0, k = (sum / n) - (n - 1) / 2; j < n; j++, k++)
+//				{
+//					temp.push_back(k);
+//				}
+//				res.push_back(temp);
+//			}
+//		}
+//		return res;
+//	}
+//};
+
+//42
+//class Solution {
+//public:
+//	vector<int> FindNumbersWithSum(vector<int> array, int sum)
+//	{
+//		vector<int> res;
+//		int i = 0, j = array.size() - 1;
+//		while (i < j)
+//		{
+//			if ((array[i] + array[j]) == sum)
+//			{
+//				res.push_back(array[i]);
+//				res.push_back(array[j]);
+//				break;
+//			}
+//			if (array[i] + array[j] > sum)
+//				j--;
+//			if (array[i] + array[j] < sum)
+//			{
+//				i++;
+//			}
+//		}
+//		return res;
+//	}
+//};
+
+//43
 class Solution
 {
 public:
-	vector<vector<int> > FindContinuousSequence(int sum)
+	string LeftRotateString(string str, int n)
 	{
-		vector<vector<int> > res;
-		for (int n = (int)sqrt(sum*2); n > 1; n--)
-		{
-			if ((n & 1) == 1 && (sum % n) == 0 || (sum % n) * 2 == n)
-			{
-				vector<int> temp;
-				for (int j = 0, k = (sum / n) - (n - 1) / 2; j < n; j++, k++)
-				{
-					temp.push_back(k);
-				}
-				res.push_back(temp);
-			}
-		}
-		return res;
+		int len = str.size();
+		if (len == 0)
+			return "";
+		n = n % len;
+		str = str + str;
+		return str.substr(n, len);
 	}
 };
