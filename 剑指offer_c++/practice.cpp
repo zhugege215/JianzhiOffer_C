@@ -1351,3 +1351,29 @@ public:
 		return str.substr(n, len);
 	}
 };
+
+//44
+class Solution
+{
+public:
+	string ReverseSentence(string str)
+	{
+		int n = str.size();
+		string temp = "", ans = "";
+		for (int i = 0; i < n; i++)
+		{
+			if (str[i] == ' ')
+			{
+				ans = " " + temp + ans;
+				temp = "";
+			}
+			else
+			{
+				temp = temp + str[i];
+			}
+		}
+		if (temp.size())
+			ans = temp + ans;
+		return ans;
+	}
+};
