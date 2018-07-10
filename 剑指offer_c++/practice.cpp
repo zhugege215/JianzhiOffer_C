@@ -1338,42 +1338,42 @@ struct RandomListNode {
 //};
 
 //43
-class Solution
-{
-public:
-	string LeftRotateString(string str, int n)
-	{
-		int len = str.size();
-		if (len == 0)
-			return "";
-		n = n % len;
-		str = str + str;
-		return str.substr(n, len);
-	}
-};
+//class Solution
+//{
+//public:
+//	string LeftRotateString(string str, int n)
+//	{
+//		int len = str.size();
+//		if (len == 0)
+//			return "";
+//		n = n % len;
+//		str = str + str;
+//		return str.substr(n, len);
+//	}
+//};
 
 //44
-class Solution
-{
-public:
-	string ReverseSentence(string str)
-	{
-		int n = str.size();
-		string temp = "", ans = "";
-		for (int i = 0; i < n; i++)
-		{
-			if (str[i] == ' ')
-			{
-				ans = " " + temp + ans;
-				temp = "";
-			}
-			else
-			{
-				temp = temp + str[i];
-			}
-		}
-		if (temp.size())
-			ans = temp + ans;
-		return ans;
-	}
-};
+//class Solution
+//{
+//public:
+//	string ReverseSentence(string str)
+//	{
+//		int n = str.size();
+//		string temp = "", ans = "";
+//		for (int i = 0; i < n; i++)
+//		{
+//			if (str[i] == ' ')
+//			{
+//				ans = " " + temp + ans;
+//				temp = "";
+//			}
+//			else
+//			{
+//				temp = temp + str[i];
+//			}
+//		}
+//		if (temp.size())
+//			ans = temp + ans;
+//		return ans;
+//	}
+//};
