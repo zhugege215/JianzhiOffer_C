@@ -1377,3 +1377,56 @@ struct RandomListNode {
 //		return ans;
 //	}
 //};
+
+//45
+//class Solution {
+//public:
+//	bool IsContinuous(vector<int> numbers)
+//	{
+//		if (numbers.size() != 5)
+//			return false;
+//		int min = 14, max = -1, flag = 0;
+//		for (int i = 0; i < numbers.size(); i++)
+//		{
+//			int number = numbers[i];
+//			if (number < 0 || number > 13)
+//				return false;
+//			if (number == 0)
+//				continue;
+//			if (((flag >> number) & 1) == 1)
+//				return false;
+//			flag |= (1 << number);
+//			if (number > max) max = number;
+//			if (number < min) min = number;
+//			if ((max - min) >= 5)
+//				return false;
+//		}
+//		return true;
+//	}
+//};
+
+//46
+//class Solution
+//{
+//public:
+//	int LastRemaining_Solution(int n, int m)
+//	{
+//		if (n < 1 || m < 1) return -1;
+//		vector<int> array(n, 0);
+//		int i = -1, step = 0, count = n;
+//		while (count > 0)
+//		{
+//			i++;
+//			if (i >= n) i = 0;
+//			if (array[i] == -1) continue;
+//			step += 1;
+//			if (step == m)
+//			{
+//				array[i] == -1;
+//				step = 0;
+//				count--;
+//			}
+//		}
+//		return i;
+//	}
+//};
