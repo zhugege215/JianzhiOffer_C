@@ -1430,3 +1430,52 @@ struct RandomListNode {
 //		return i;
 //	}
 //};
+
+//47
+//class Solution {
+//public:
+//	int Sum_Solution(int n) {
+//		int ans;
+//		ans && (ans += Sum_Solution(n - 1));
+//		return ans;
+//	}
+//};
+
+//48
+//class Solution
+//{
+//public:
+//	int Add(int num1, int num2)
+//	{
+//		int temp = 0;
+//		while (num2 != 0)
+//		{
+//			temp = num1 ^ num2;
+//			num2 = (num1 & num2) << 1;
+//			num1 = temp;
+//		}
+//		return num1;
+//	}
+//};
+
+//49
+//class Solution
+//{
+//public:
+//	int StrToInt(string str)
+//	{
+//		int n = str.size(), s = 1;
+//		if (!n)
+//			return 0;
+//		long long res = 0;
+//		if (str[0] == '-')
+//			s = -1;
+//		for (int i = (str[0] == '+' || str[0] == '-') ? 1 : 0; i < n; i++)
+//		{
+//			if (!(str[i] >= '0' && str[i] <= '9'))
+//				return 0;
+//			res = res * 10 + (str[i] - '0');
+//		}
+//		return res * s;
+//	}
+//};
