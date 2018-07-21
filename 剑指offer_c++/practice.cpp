@@ -1499,3 +1499,56 @@ struct RandomListNode {
 //		return false;
 //	}
 //};
+
+//51
+//class Solution
+//{
+//public:
+//	vector<int> multiply(const vector<int> &A)
+//	{
+//		vector<int> ans;
+//		int si = A.size();
+//		ans.push_back(1);
+//		for (int i = 0; i < si - 1; i++)
+//		{
+//			ans.push_back(ans.back() * A[i]);
+//		}
+//		int temp = 1;
+//		for (int i = si - 1; i >= 0; i--)
+//		{
+//			ans[i] = ans[i] * temp;
+//			temp = temp * A[i];
+//		}
+//		return ans;
+//	}
+//};
+
+//52
+//class Solution
+//{
+//public:
+//	bool match(char* str, char* pattern)
+//	{
+//		if (str == nullptr || pattern == nullptr)
+//			return false;
+//		return matchfun(str, pattern);
+//	}
+//
+//	bool matchfun(char* str, char* pattern)
+//	{
+//		if (*str == '\0' && *pattern == '\0')
+//			return true;
+//		if (*str != '\0' && *pattern == '\0')
+//			return false;
+//		if (*(pattern + 1) == '*')
+//		{
+//			if (*str == *pattern || (*pattern == '.' && *str != '\0'))
+//				return matchfun(str + 1, pattern) || matchfun(str, pattern + 2);
+//			else
+//				return matchfun(str, pattern + 2);
+//		}
+//		if (*str == *pattern || (*pattern == '.' && *str != '\0'))
+//			return matchfun(str + 1, pattern + 1);
+//		return false;
+//	}
+//};
