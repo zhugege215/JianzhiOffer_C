@@ -1552,3 +1552,75 @@ struct RandomListNode {
 //		return false;
 //	}
 //};
+
+//53
+//class Solution
+//{
+//public:
+//	bool isNumeric(char *string)
+//	{
+//		bool hase = false, hasfu = false, hasdian = false;
+//		for (int i = 0; i < strlen(string); i++)
+//		{
+//			if (string[i] == 'e' || string[i] == 'E')
+//			{
+//				if (i == (strlen(string) - 1))
+//					return false;
+//				if (hase)
+//					return false;
+//				hase = true;
+//			}
+//			else if (string[i] == '+' || string[i] == '-')
+//			{
+//				if (hasfu && string[i - 1] != 'e' && string[i - 1] != 'E')
+//					return false;
+//				if (!hasfu && i > 0 && string[i - 1] != 'e'&&string[i - 1] != 'E')
+//					return false;
+//				hasfu = true;
+//			}
+//			else if (string[i] == '.')
+//			{
+//				if (hase || hasdian)
+//					return false;
+//				hasdian = true;
+//			}
+//			else if (string[i] < '0' || string[i] > '9')
+//				return false;
+//		}
+//		return true;
+//	}
+//};
+
+//54
+//class Solution
+//{
+//public:
+//	Solution()
+//	{
+//		memset(cnt, 0, sizeof(cnt));
+//	}
+//
+//	void Insert(char ch)
+//	{
+//		++cnt[ch - '\0'];
+//		if (cnt[ch - '\0'] == 1)
+//			data.push(ch);
+//	}
+//
+//	char FirstAppearingOnce()
+//	{
+//		while (!data.empty() && cnt[data.front() - '\0'] >= 2)
+//		{
+//			data.pop();
+//		}
+//		if (data.empty())
+//			return '#';
+//		return data.front();
+//	}
+//
+//private:
+//	queue<char> data;
+//	unsigned int cnt[128];
+//};
+
+//55
