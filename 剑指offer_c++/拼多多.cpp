@@ -30,6 +30,10 @@ int shan_gu()
 		scanf("%c", &s);
 	}
 
+	/*char c;
+	while ((c = getchar()) != EOF) {
+		if (isdigit(c)) a[++n] = c - '0';
+	}*/
 
 
 	if (A.size() < 3)

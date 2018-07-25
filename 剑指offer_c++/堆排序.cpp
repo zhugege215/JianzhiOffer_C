@@ -53,7 +53,7 @@ void core(vector<int> &ans, int start, int len)
 	ans[start] = temp;
 }
 
-void heapsort(vector<int> ans)
+void heapsort(vector<int> &ans)
 {
 	int i;
 	for (i = ans.size() / 2 - 1; i >= 0; i--)

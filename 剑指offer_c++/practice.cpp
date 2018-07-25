@@ -1624,3 +1624,74 @@ struct RandomListNode {
 //};
 
 //55
+//struct ListNode
+//{
+//	int val;
+//	struct ListNode *next;
+//	ListNode(int x): val(x), next(nullptr) {}
+//};
+//
+//class Solution
+//{
+//public:
+//	ListNode * EntryNodeOfLoop(ListNode* pHead)
+//	{
+//		if (pHead == nullptr || pHead->next == nullptr)
+//			return nullptr;
+//		ListNode *p1, *p2;
+//		p1 = p2 = pHead;
+//		while (p2 != nullptr && p2->next != nullptr)
+//		{
+//			p1 = p1->next;
+//			p2 = p2->next->next;
+//			if (p1 == p2)
+//			{
+//				p1 = pHead;
+//				while (p1 != p2)
+//				{
+//					p1 = p1->next;
+//					p2 = p2->next;
+//				}
+//				if (p1 == p2)
+//					return p1;
+//			}
+//		}
+//		return nullptr;
+//	}
+//};
+
+//56
+struct ListNode
+{
+	int val;
+	struct ListNode *next;
+	ListNode(int x) : val(x), next(nullptr) {}
+};
+
+class Solution
+{
+public:
+	ListNode * deleteDuplication(ListNode* pHead)
+	{
+		if (pHead == nullptr)
+			return nullptr;
+		if (pHead != nullptr &&pHead->next == nullptr)
+			return pHead;
+		ListNode *current;
+		if (pHead->next->val == pHead->val)
+		{
+			current = pHead->next->next;
+			while (current!=nullptr && current->val == pHead->val)
+			{
+				current = current->next;
+			}
+			return deleteDuplication(current);
+		}
+		else
+		{
+			current = pHead->next;
+			pHead->next = deleteDuplication(current);
+			return pHead;
+		}
+	}
+};

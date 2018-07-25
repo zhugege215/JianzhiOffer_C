@@ -48,14 +48,17 @@ public:
 //·Çµİ¹é
 int numTrees(int n)
 {
-	int nums[2000] = { 1,1, };
-	int i, x;
+	int num[2000] = { 1,1, };
+	int i, x, temp;
 	for (x = 2; x <= n; x++)
 	{
+
 		for (i = 1; i <= x; i++)
 		{
-			nums[x] = nums[i - 1] * nums[x - i];
+			temp += num[i - 1] * num[x - i];
 		}
+		num[x] = temp;
+		temp = 0;
 	}
-	return nums[n];
+	return num[n];
 }
