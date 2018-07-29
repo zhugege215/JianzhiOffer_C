@@ -1661,37 +1661,103 @@ struct RandomListNode {
 //};
 
 //56
-struct ListNode
+//struct ListNode
+//{
+//	int val;
+//	struct ListNode *next;
+//	ListNode(int x) : val(x), next(nullptr) {}
+//};
+//
+//class Solution
+//{
+//public:
+//	ListNode * deleteDuplication(ListNode* pHead)
+//	{
+//		if (pHead == nullptr)
+//			return nullptr;
+//		if (pHead != nullptr &&pHead->next == nullptr)
+//			return pHead;
+//		ListNode *current;
+//		if (pHead->next->val == pHead->val)
+//		{
+//			current = pHead->next->next;
+//			while (current!=nullptr && current->val == pHead->val)
+//			{
+//				current = current->next;
+//			}
+//			return deleteDuplication(current);
+//		}
+//		else
+//		{
+//			current = pHead->next;
+//			pHead->next = deleteDuplication(current);
+//			return pHead;
+//		}
+//	}
+//};
+
+//57
+//struct TreeLinkNode 
+//{
+//	int val;
+//	struct TreeLinkNode *left;
+//	struct TreeLinkNode *right;
+//	struct TreeLinkNode *next;
+//	TreeLinkNode(int x) : val(x), left(nullptr), right(nullptr), next(nullptr) {}
+//};
+//
+//class Solution
+//{
+//public:
+//	TreeLinkNode * GetNext(TreeLinkNode *pNode)
+//	{
+//		if (pNode == nullptr)
+//			return nullptr;
+//		if (pNode->right != nullptr)
+//		{
+//			TreeLinkNode * ans = pNode->right;
+//			while (ans->left)
+//			{
+//				ans = ans->left;
+//			}
+//			return ans;
+//		}
+//		while (pNode->next != nullptr)
+//		{
+//			if (pNode->next->left == pNode)
+//				return pNode->next;
+//			pNode = pNode->next;
+//		}
+//		return nullptr;
+//	}
+//};
+
+//58
+struct TreeNode
 {
 	int val;
-	struct ListNode *next;
-	ListNode(int x) : val(x), next(nullptr) {}
+	struct TreeNode *left;
+	struct TreeNode *right;
+	TreeNode(int x): val(x), left(nullptr), right(nullptr){}
 };
 
-class Solution
-{
+class Solution {
 public:
-	ListNode * deleteDuplication(ListNode* pHead)
+	bool isSymmetrical(TreeNode* pRoot)
 	{
-		if (pHead == nullptr)
-			return nullptr;
-		if (pHead != nullptr &&pHead->next == nullptr)
-			return pHead;
-		ListNode *current;
-		if (pHead->next->val == pHead->val)
-		{
-			current = pHead->next->next;
-			while (current!=nullptr && current->val == pHead->val)
-			{
-				current = current->next;
-			}
-			return deleteDuplication(current);
-		}
-		else
-		{
-			current = pHead->next;
-			pHead->next = deleteDuplication(current);
-			return pHead;
-		}
+		if (pRoot == nullptr)
+			return false;
+		return core(pRoot->left, pRoot->right);
+	}
+
+	bool core(TreeNode* left, TreeNode* right)
+	{
+		if (left == nullptr)
+			return right == nullptr;
+		if (right == nullptr)
+			return false;
+		if (left->val != right->val)
+			return false;
+		return core(left->left, right->right) && core(left->right, right->left);
 	}
 };

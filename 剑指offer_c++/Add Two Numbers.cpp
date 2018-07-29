@@ -1,0 +1,39 @@
+#include <vector>
+#include <unordered_map>
+#include <iostream>
+using namespace std;
+
+struct ListNode
+{
+	int val;
+	ListNode *next;
+	ListNode(int x) : val(x), next(nullptr) {}
+};
+
+class Solution
+{
+public:
+	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) 
+	{
+		ListNode ans(0);
+		ListNode* res = &ans;
+		int carry = 0;
+		while (l1 != nullptr || l2 != nullptr || carry != 0)
+		{
+			if (l1 != nullptr)
+			{
+				carry += l1->val;
+				l1 = l1->next;
+			}
+			if (l2 != nullptr)
+			{
+				carry += l2->val;
+				l2 = l2->next;
+			}
+			res->next = new ListNode(carry % 10);
+			res = res->next;
+			carry = carry / 10;
+		}
+		return ans.next;
+	}
+};
