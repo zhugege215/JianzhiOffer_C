@@ -168,3 +168,6 @@ void Merge(vector<int> &data, vector<int> &copy, int start, int length, int end)
 //	MergeSort(data);
 //	return 0;
 //}
+
+
+//c++版本的非递归还没有写呢

@@ -85,5 +85,5 @@ void qsort(vector<int> &ans, int low, int high)
 
 void quicksort(vector<int> ans)
 {
-	qsort(ans, 1, ans.size());
+	qsort(ans, 0, ans.size() - 1);
 }
