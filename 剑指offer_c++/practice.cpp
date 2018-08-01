@@ -1733,31 +1733,99 @@ struct RandomListNode {
 //};
 
 //58
+//struct TreeNode
+//{
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x): val(x), left(nullptr), right(nullptr){}
+//};
+//
+//class Solution {
+//public:
+//	bool isSymmetrical(TreeNode* pRoot)
+//	{
+//		if (pRoot == nullptr)
+//			return false;
+//		return core(pRoot->left, pRoot->right);
+//	}
+//
+//	bool core(TreeNode* left, TreeNode* right)
+//	{
+//		if (left == nullptr)
+//			return right == nullptr;
+//		if (right == nullptr)
+//			return false;
+//		if (left->val != right->val)
+//			return false;
+//		return core(left->left, right->right) && core(left->right, right->left);
+//	}
+//};
+
+//59
 struct TreeNode
 {
 	int val;
 	struct TreeNode *left;
 	struct TreeNode *right;
-	TreeNode(int x): val(x), left(nullptr), right(nullptr){}
+	TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-	bool isSymmetrical(TreeNode* pRoot)
+	vector<vector<int> > Print(TreeNode* pRoot)
 	{
-		if (pRoot == nullptr)
-			return false;
-		return core(pRoot->left, pRoot->right);
-	}
-
-	bool core(TreeNode* left, TreeNode* right)
-	{
-		if (left == nullptr)
-			return right == nullptr;
-		if (right == nullptr)
-			return false;
-		if (left->val != right->val)
-			return false;
-		return core(left->left, right->right) && core(left->right, right->left);
+		stack<TreeNode*> dan, shuang;
+		vector<vector<int> > ans;
+		vector<int> temp;
+		dan.push(pRoot);
+		int layer = 1;
+		while (!dan.empty() || !shuang.empty())
+		{
+			if (layer % 2 != 0)
+			{
+				while (!dan.empty())
+				{
+					if (dan.top() != nullptr)
+					{
+						cout << dan.top()->val << " ";
+						temp.push_back(dan.top()->val);
+						shuang.push(dan.top()->left);
+						shuang.push(dan.top()->right);
+					}
+					dan.pop();
+				}
+				if (!temp.empty())
+				{
+					ans.push_back(temp);
+					temp.clear();
+					layer++;
+					cout << endl;
+				}
+			}
+			else
+			{
+				while (!shuang.empty())
+				{
+					if (shuang.top() != nullptr)
+					{
+						cout << shuang.top()->val << " ";
+						temp.push_back(shuang.top()->val);
+						dan.push(shuang.top()->right);
+						dan.push(shuang.top()->left);
+					}
+					shuang.pop();
+				}
+				if (!temp.empty())
+				{
+					ans.push_back(temp);
+					temp.clear();
+					layer++;
+					cout << endl;
+				}
+			}
+		}
+		return ans;
 	}
 };
