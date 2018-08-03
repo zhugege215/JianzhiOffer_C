@@ -1763,68 +1763,108 @@ struct RandomListNode {
 //};
 
 //59
+//struct TreeNode
+//{
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
+//};
+//
+//class Solution
+//{
+//public:
+//	vector<vector<int> > Print(TreeNode* pRoot)
+//	{
+//		stack<TreeNode*> dan, shuang;
+//		vector<vector<int> > ans;
+//		vector<int> temp;
+//		dan.push(pRoot);
+//		int layer = 1;
+//		while (!dan.empty() || !shuang.empty())
+//		{
+//			if (layer % 2 != 0)
+//			{
+//				while (!dan.empty())
+//				{
+//					if (dan.top() != nullptr)
+//					{
+//						cout << dan.top()->val << " ";
+//						temp.push_back(dan.top()->val);
+//						shuang.push(dan.top()->left);
+//						shuang.push(dan.top()->right);
+//					}
+//					dan.pop();
+//				}
+//				if (!temp.empty())
+//				{
+//					ans.push_back(temp);
+//					temp.clear();
+//					layer++;
+//					cout << endl;
+//				}
+//			}
+//			else
+//			{
+//				while (!shuang.empty())
+//				{
+//					if (shuang.top() != nullptr)
+//					{
+//						cout << shuang.top()->val << " ";
+//						temp.push_back(shuang.top()->val);
+//						dan.push(shuang.top()->right);
+//						dan.push(shuang.top()->left);
+//					}
+//					shuang.pop();
+//				}
+//				if (!temp.empty())
+//				{
+//					ans.push_back(temp);
+//					temp.clear();
+//					layer++;
+//					cout << endl;
+//				}
+//			}
+//		}
+//		return ans;
+//	}
+//};
+
+//60
 struct TreeNode
 {
 	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
+	struct TreeNode* left;
+	struct TreeNode* right;
 	TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
 };
 
-class Solution
-{
+class Solution {
 public:
-	vector<vector<int> > Print(TreeNode* pRoot)
-	{
-		stack<TreeNode*> dan, shuang;
+	vector<vector<int> > Print(TreeNode* pRoot) {
 		vector<vector<int> > ans;
+		if (pRoot == nullptr)
+			return ans;
 		vector<int> temp;
-		dan.push(pRoot);
-		int layer = 1;
-		while (!dan.empty() || !shuang.empty())
+		int length = 0;
+		queue<TreeNode*> q;
+		q.push(pRoot);
+		while (!q.empty())
 		{
-			if (layer % 2 != 0)
+			length = q.size();
+			while (length)
 			{
-				while (!dan.empty())
-				{
-					if (dan.top() != nullptr)
-					{
-						cout << dan.top()->val << " ";
-						temp.push_back(dan.top()->val);
-						shuang.push(dan.top()->left);
-						shuang.push(dan.top()->right);
-					}
-					dan.pop();
-				}
-				if (!temp.empty())
-				{
-					ans.push_back(temp);
-					temp.clear();
-					layer++;
-					cout << endl;
-				}
+				TreeNode* aa = q.front();
+				if (aa->left)
+					q.push(aa->left);
+				if (aa->right)
+					q.push(aa->right);
+				temp.push_back(aa->val);
+				q.pop();
+				length--;
 			}
-			else
-			{
-				while (!shuang.empty())
-				{
-					if (shuang.top() != nullptr)
-					{
-						cout << shuang.top()->val << " ";
-						temp.push_back(shuang.top()->val);
-						dan.push(shuang.top()->right);
-						dan.push(shuang.top()->left);
-					}
-					shuang.pop();
-				}
-				if (!temp.empty())
-				{
-					ans.push_back(temp);
-					temp.clear();
-					layer++;
-					cout << endl;
-				}
-			}
+			ans.push_back(temp);
+			temp.clear();
 		}
 		return ans;
 	}
