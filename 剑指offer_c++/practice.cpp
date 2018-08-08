@@ -1831,41 +1831,115 @@ struct RandomListNode {
 //};
 
 //60
+//struct TreeNode
+//{
+//	int val;
+//	struct TreeNode* left;
+//	struct TreeNode* right;
+//	TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
+//};
+//
+//class Solution {
+//public:
+//	vector<vector<int> > Print(TreeNode* pRoot) {
+//		vector<vector<int> > ans;
+//		if (pRoot == nullptr)
+//			return ans;
+//		vector<int> temp;
+//		int length = 0;
+//		queue<TreeNode*> q;
+//		q.push(pRoot);
+//		while (!q.empty())
+//		{
+//			length = q.size();
+//			while (length)
+//			{
+//				TreeNode* aa = q.front();
+//				if (aa->left)
+//					q.push(aa->left);
+//				if (aa->right)
+//					q.push(aa->right);
+//				temp.push_back(aa->val);
+//				q.pop();
+//				length--;
+//			}
+//			ans.push_back(temp);
+//			temp.clear();
+//		}
+//		return ans;
+//	}
+//};
+
+//61
 struct TreeNode
 {
 	int val;
-	struct TreeNode* left;
-	struct TreeNode* right;
+	struct TreeNode *left;
+	struct TreeNode *right;
 	TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-	vector<vector<int> > Print(TreeNode* pRoot) {
-		vector<vector<int> > ans;
-		if (pRoot == nullptr)
-			return ans;
-		vector<int> temp;
-		int length = 0;
-		queue<TreeNode*> q;
-		q.push(pRoot);
-		while (!q.empty())
-		{
-			length = q.size();
-			while (length)
-			{
-				TreeNode* aa = q.front();
-				if (aa->left)
-					q.push(aa->left);
-				if (aa->right)
-					q.push(aa->right);
-				temp.push_back(aa->val);
-				q.pop();
-				length--;
-			}
-			ans.push_back(temp);
-			temp.clear();
-		}
+	char* Serialize(TreeNode *root)
+	{
+		if (root == nullptr)
+			return nullptr;
+		string str;
+		Serialize(root, str);
+		char* ret = new char[str.size() + 1];
+		int i;
+		for (i = 0; i < str.size(); i++)
+			ret[i] = str[i];
+		ret[i] = '\0';
+		return ret;
+	}
+
+	TreeNode* Deserialize(char *str)
+	{
+		if (str == nullptr)
+			return nullptr;
+		TreeNode* ans = Deserialize(&str);
 		return ans;
+	}
+private:
+	void Serialize(TreeNode *root, string &str)
+	{
+		if (root == nullptr)
+		{
+			str += '#';
+			return;
+		}
+		string temp = to_string(root->val);
+		str += temp;
+		str += ',';
+		Serialize(root->left, str);
+		Serialize(root->right, str);
+	}
+
+	TreeNode* Deserialize(char ** str)
+	{
+		if (**str == '#')
+		{
+			(*str)++;
+			return nullptr;
+		}
+		int num = 0;
+		while (**str != '\0' && **str != ',')
+		{
+			num = num + 10 + ((**str) - '0');
+			++(*str);
+		}
+		TreeNode* root = new TreeNode(num);
+		if (**str == '\0')
+			return root;
+		else
+		{
+			(*str)++;
+		}
+		root->left = Deserialize(str);
+		root->right = Deserialize(str);
+		return root;
 	}
 };
