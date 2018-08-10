@@ -4,8 +4,8 @@
 using namespace std;
 
 class Solution {
-	priority_queue<int, vector<int>, less<int>> qianmian;
-	priority_queue<int, vector<int>, greater<int>> houmian;
+	priority_queue<int, vector<int>, less<int>> qianmian;	//´ó¶¥¶Ñ
+	priority_queue<int, vector<int>, greater<int>> houmian;	//Ð¡¶¥¶Ñ
 
 public:
 	void Insert(int num) {

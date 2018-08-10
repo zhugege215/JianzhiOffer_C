@@ -1871,75 +1871,170 @@ struct RandomListNode {
 //};
 
 //61
-struct TreeNode
-{
-	int val;
-	struct TreeNode *left;
-	struct TreeNode *right;
-	TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
-};
+//struct TreeNode
+//{
+//	int val;
+//	struct TreeNode *left;
+//	struct TreeNode *right;
+//	TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
+//};
+//
+//class Solution
+//{
+//public:
+//	char* Serialize(TreeNode *root)
+//	{
+//		if (root == nullptr)
+//			return nullptr;
+//		string str;
+//		Serialize(root, str);
+//		char* ret = new char[str.size() + 1];
+//		int i;
+//		for (i = 0; i < str.size(); i++)
+//			ret[i] = str[i];
+//		ret[i] = '\0';
+//		return ret;
+//	}
+//
+//	TreeNode* Deserialize(char *str)
+//	{
+//		if (str == nullptr)
+//			return nullptr;
+//		TreeNode* ans = Deserialize(&str);
+//		return ans;
+//	}
+//private:
+//	void Serialize(TreeNode *root, string &str)
+//	{
+//		if (root == nullptr)
+//		{
+//			str += '#';
+//			return;
+//		}
+//		string temp = to_string(root->val);
+//		str += temp;
+//		str += ',';
+//		Serialize(root->left, str);
+//		Serialize(root->right, str);
+//	}
+//
+//	TreeNode* Deserialize(char ** str)
+//	{
+//		if (**str == '#')
+//		{
+//			(*str)++;
+//			return nullptr;
+//		}
+//		int num = 0;
+//		while (**str != '\0' && **str != ',')
+//		{
+//			num = num + 10 + ((**str) - '0');
+//			++(*str);
+//		}
+//		TreeNode* root = new TreeNode(num);
+//		if (**str == '\0')
+//			return root;
+//		else
+//		{
+//			(*str)++;
+//		}
+//		root->left = Deserialize(str);
+//		root->right = Deserialize(str);
+//		return root;
+//	}
+//};
 
-class Solution
-{
-public:
-	char* Serialize(TreeNode *root)
-	{
-		if (root == nullptr)
-			return nullptr;
-		string str;
-		Serialize(root, str);
-		char* ret = new char[str.size() + 1];
-		int i;
-		for (i = 0; i < str.size(); i++)
-			ret[i] = str[i];
-		ret[i] = '\0';
-		return ret;
-	}
+//62
+//struct TreeNode
+//{
+//	int val;
+//	TreeNode * left;
+//	TreeNode * right;
+//	TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+//};
+//
+//class Solution
+//{
+//	int count = 0;
+//public:
+//	TreeNode * KthNode(TreeNode *pRoot, int k)
+//	{
+//		if (pRoot == nullptr)
+//			return nullptr;
+//		else
+//		{
+//			TreeNode* ans = KthNode(pRoot->left, k);
+//			if (ans)
+//				return ans;
+//
+//			if (++count == k)
+//				return pRoot;
+//
+//			ans = KthNode(pRoot->right, k);
+//			if (ans)
+//				return ans;
+//			return ans;
+//		}
+//	}
+//};
 
-	TreeNode* Deserialize(char *str)
-	{
-		if (str == nullptr)
-			return nullptr;
-		TreeNode* ans = Deserialize(&str);
-		return ans;
-	}
-private:
-	void Serialize(TreeNode *root, string &str)
-	{
-		if (root == nullptr)
-		{
-			str += '#';
-			return;
-		}
-		string temp = to_string(root->val);
-		str += temp;
-		str += ',';
-		Serialize(root->left, str);
-		Serialize(root->right, str);
-	}
+//63
+//class Solution {
+//	priority_queue<int, vector<int>, less<int>> dadingdui;
+//	priority_queue<int, vector<int>, greater<int>> xiaodingdui;
+//
+//public:
+//	void Insert(int num)
+//	{
+//		if (dadingdui.empty() || num <= dadingdui.top())
+//			dadingdui.push(num);
+//		else
+//		{
+//			xiaodingdui.push(num);
+//		}
+//		if (dadingdui.size() + 1 == xiaodingdui.size())
+//		{
+//			dadingdui.push(xiaodingdui.top());
+//			xiaodingdui.pop();
+//		}
+//		if (dadingdui.size() == xiaodingdui.size() + 2)
+//		{
+//			xiaodingdui.push(dadingdui.top());
+//			dadingdui.pop();
+//		}
+//	}
+//
+//	double GetMedian()
+//	{
+//		return dadingdui.size() > xiaodingdui.size() ? dadingdui.top() : (dadingdui.top() + xiaodingdui.top()) / 2.0;
+//	}
+//
+//};
 
-	TreeNode* Deserialize(char ** str)
-	{
-		if (**str == '#')
-		{
-			(*str)++;
-			return nullptr;
-		}
-		int num = 0;
-		while (**str != '\0' && **str != ',')
-		{
-			num = num + 10 + ((**str) - '0');
-			++(*str);
-		}
-		TreeNode* root = new TreeNode(num);
-		if (**str == '\0')
-			return root;
-		else
-		{
-			(*str)++;
-		}
-		root->left = Deserialize(str);
-		root->right = Deserialize(str);
-		return root;
-	}
-};
+//64
+//class Solution {
+//public:
+//	vector<int> maxInWindows(const vector<int>& num, unsigned int size)
+//	{
+//		vector<int> ans;
+//		deque<int> s;
+//		int n = num.size();
+//		if (n == 0)
+//			return ans;
+//		for (int i = 0; i < n; ++i)
+//		{
+//			while (s.size() && num[s.back()] <= num[i])
+//			{
+//				s.pop_back();
+//			}
+//			while (s.size() && i - s.front() >= size)
+//			{
+//				s.pop_front();
+//			}
+//			s.push_back(i);
+//			if (size && (i + 1) >= size)
+//				ans.push_back(num[s.front()]);
+//		}
+//		return ans;
+//	}
+//};
