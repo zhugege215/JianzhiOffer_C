@@ -38,3 +38,39 @@ public:
 		}
 	}
 };
+
+
+
+//Ç°Ðò
+//public void preOrderTraverse2(TreeNode root) {
+//	LinkedList<TreeNode> stack = new LinkedList<>();
+//	TreeNode pNode = root;
+//	while (pNode != null || !stack.isEmpty()) {
+//		if (pNode != null) {
+//			System.out.print(pNode.val + "  ");
+//			stack.push(pNode);
+//			pNode = pNode.left;
+//		}
+//		else { //pNode == null && !stack.isEmpty()  
+//			TreeNode node = stack.pop();
+//			pNode = node.right;
+//		}
+//	}
+//}
+
+//ÖÐÐò
+//public void inOrderTraverse2(TreeNode root) {
+//	LinkedList<TreeNode> stack = new LinkedList<>();
+//	TreeNode pNode = root;
+//	while (pNode != null || !stack.isEmpty()) {
+//		if (pNode != null) {
+//			stack.push(pNode);
+//			pNode = pNode.left;
+//		}
+//		else { //pNode == null && !stack.isEmpty()  
+//			TreeNode node = stack.pop();
+//			System.out.print(node.val + "  ");
+//			pNode = node.right;
+//		}
+//	}
+//}

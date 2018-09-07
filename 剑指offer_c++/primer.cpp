@@ -50,3 +50,13 @@ using namespace std;
 //	for (const auto &w : word_count)
 //		cout << w.first << " occurs " << w.second << ((w.second > 1) ? " times" : " time") << endl;
 //}
+
+//加法与除法，结论：向下取整
+//int main()
+//{
+//	int left = 0, right = 5;
+//	int mid = left + (right - left) / 2;
+//	cout << mid << endl;//2
+//	mid = 1 / 2 + 8;
+//	cout << mid << endl;//8
+//}
