@@ -11,7 +11,7 @@
 #include <map>
 #include <cmath>
 using namespace std;
-//int sum = 0;
+
 //1
 //void bfs(vector<vector<int>> &grid, int i, int j, int& num)
 //{
