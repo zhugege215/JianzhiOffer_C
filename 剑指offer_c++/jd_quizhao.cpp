@@ -44,3 +44,15 @@ int solve(string S, string T) {
 	}
 	return cnt;
 }
+
+//答案
+//核心代码是一个大佬写的letcode205，题解
+
+//#s = "ababcb"
+//#a = 'xyx'
+//s, a = input(), input()
+//res1 = 0
+//for i in range(len(s) - len(a) + 1) :
+//	if len(set(zip(s[i:len(a) + i], a))) == len(set(s[i:len(a) + i])) and len(set(s[i:len(a) + i])) == len(set(a)) :
+//		res1 += 1
+//		print(res1)
