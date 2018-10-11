@@ -63,34 +63,34 @@ int core(vector<int> arr, int idx)
 	return cnt;
 }
 
-int main()
-{
-	int n, temp;
-	cin >> n;
-	vector<int> data;
-	for (int i = 0; i < n; i++)
-	{
-		cin >> temp;
-		data.push_back(temp);
-	}
-
-	vector<int> copy;
-	for (int i = 0; i < n; i++)
-		copy.push_back(data[i]);
-	long long count = InversePairsCore(data, copy, 0, n - 1);
-
-	int min = INT_MAX;
-	int index = -1;
-	for (int i = 0; i<n; i++) {
-		int cnt = core(data, i);
-		if (min > cnt) {
-			index = i;
-			min = cnt;
-		}
-	}
-	int res = count + min;
-	index += 1;
-
-	cout << res << " " << index;
-	return 0;
-}
+//int main()
+//{
+//	int n, temp;
+//	cin >> n;
+//	vector<int> data;
+//	for (int i = 0; i < n; i++)
+//	{
+//		cin >> temp;
+//		data.push_back(temp);
+//	}
+//
+//	vector<int> copy;
+//	for (int i = 0; i < n; i++)
+//		copy.push_back(data[i]);
+//	long long count = InversePairsCore(data, copy, 0, n - 1);
+//
+//	int min = INT_MAX;
+//	int index = -1;
+//	for (int i = 0; i<n; i++) {
+//		int cnt = core(data, i);
+//		if (min > cnt) {
+//			index = i;
+//			min = cnt;
+//		}
+//	}
+//	int res = count + min;
+//	index += 1;
+//
+//	cout << res << " " << index;
+//	return 0;
+//}

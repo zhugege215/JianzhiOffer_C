@@ -54,26 +54,26 @@ using namespace std;
 //	return 0;
 //}
 
-int main()
-{
-	int t;
-	cin >> t;
-	for (int i = 0; i < t; i++)
-	{
-		int n;
-		cin >> n;
-		map<int, vector<int>> mp;
-		vector<int> jilu;
-		for (int i = 1; i <= n; i++)
-		{
-			char signal;
-			int x1, y1, x2, y2;
-			cin >> signal >> x1 >> y1 >> x2 >> y2;
-			if (signal == 'T' && mp.size() >= 1)
-			{
-				for()
-			}
-
-		}
-	}
-}
+//int main()
+//{
+//	int t;
+//	cin >> t;
+//	for (int i = 0; i < t; i++)
+//	{
+//		int n;
+//		cin >> n;
+//		map<int, vector<int>> mp;
+//		vector<int> jilu;
+//		for (int i = 1; i <= n; i++)
+//		{
+//			char signal;
+//			int x1, y1, x2, y2;
+//			cin >> signal >> x1 >> y1 >> x2 >> y2;
+//			if (signal == 'T' && mp.size() >= 1)
+//			{
+//				for()
+//			}
+//
+//		}
+//	}
+//}
