@@ -1,7 +1,7 @@
 //全局变量
-int polySides; //代表有多少个点
-float polyX[]; //横坐标数组
-float polyY[]; //纵坐标数组
+int polySides = 6; //代表有多少个点
+float polyX[6]; //横坐标数组
+float polyY[6]; //纵坐标数组
 float x, y; //目标点的坐标
 
 bool pointInPolygon()
@@ -9,7 +9,7 @@ bool pointInPolygon()
 	int i, j = polySides - 1;
 	bool oddNodes = false;
 
-	for (int i = 0; i < polySides; i++)
+	for (i = 0; i < polySides; i++)
 	{
 		if ((polyY[i] < y && polyY[j] >= y) || (polyY[j] < y && polyY[i] >= y))
 		{

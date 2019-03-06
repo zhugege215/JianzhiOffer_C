@@ -4,8 +4,8 @@
 #include <string>
 #include <deque>
 #include <algorithm>
+#include <unordered_map>
 using namespace std;
-
 
 //int main() {
 //	int a = 5, b = 3, c = 0;
@@ -65,4 +65,30 @@ using namespace std;
 //	{
 //		cout << a.first << " " << a.second << endl;
 //	}
+//}
+
+
+//bool cmp(pair<string, int> &a, pair<string, int> &b)
+//{
+//	return a.first.size() > b.first.size();
+//}
+//
+//int main()
+//{
+//	vector<string> strs = { "abc", "asdf", "asdfsd" };
+//	unordered_map<string, int> m;
+//	for (int i = 0; i < strs.size(); i++)
+//		++m[strs[i]];
+//	vector<pair<string, int>> v;
+//	for (auto it = m.begin(); it != m.end(); it++)
+//	{
+//		v.push_back(*it);
+//	}
+//	sort(v.begin(), v.end(), cmp);
+//	//sort(v.begin(), v.end());
+//	for (auto it = v.begin(); it != v.end(); it++)
+//	{
+//		cout << it->first << endl;
+//	}
+//	return 0;
 //}
